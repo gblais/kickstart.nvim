@@ -18,7 +18,9 @@ Kickstart.nvim is a template for your own configuration.
   a guide. One possible example:
   - https://learnxinyminutes.com/docs/lua/
 
+
   And then you can explore or search through `:help lua-guide`
+  - https://neovim.io/doc/user/lua-guide.html
 
 
 Kickstart Guide:
@@ -101,85 +103,6 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
-  {
-    -- Adds git releated signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      -- See `:help gitsigns.txt`
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-
-      on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
-        vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
-        vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
-      end,
-
-      --[[ {{{
-      on_attach = function(bufnr)
-        if vim.api.nvim_buf_get_name(bufnr):match('<PATTERN>') then
-          -- Don't attach to specific buffers whose name matches a pattern
-          return false
-        end
-
-        -- Setup keymaps
-        --vim.api.nvim_buf_set_keymap(bufnr, 'n', 'hs', '<cmd>lua require"gitsigns".stage_hunk()<CR>', {})
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', 'hs', require('gitsigns').stage_hunk, { desc = '[H]unk [S]tage' })
-      end,
-      --]]
-      --}}}
-
-      -- From: https://github.com/omerxx/dotfiles/blob/master/nvim/init.lua {{{
-      --       https://www.youtube.com/watch?v=IyBAuDPzdFY
-      --[[
-      on_attach = function(bufnr)
-        local gs = package.loaded.gitsigns
-
-        local function map(mode, l, r, opts)
-          opts = opts or {}
-          opts.buffer = bufnr
-          vim.keymap.set(mode, l, r, opts)
-        end
-
-        -- Navigation
-        map('n', ']c', function()
-          if vim.wo.diff then return ']c' end
-          vim.schedule(function() gs.next_hunk() end)
-          return '<Ignore>'
-        end, {expr=true, desc='next hunk'})
-
-        map('n', '[c', function()
-          if vim.wo.diff then return '[c' end
-          vim.schedule(function() gs.prev_hunk() end)
-          return '<Ignore>'
-        end, {expr=true, desc='previous hunk'})
-
-        -- Actions
-        map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>')
-        map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
-        map('n', '<leader>hS', gs.stage_buffer, {desc='stage buffer'})
-        map('n', '<leader>ha', gs.stage_hunk, {desc='stage hunk'})
-        map('n', '<leader>hu', gs.undo_stage_hunk, {desc='undo_stage_hunk'})
-        map('n', '<leader>hR', gs.reset_buffer, {desc='reset_buffer'})
-        map('n', '<leader>hp', gs.preview_hunk, {desc='preview_hunk'})
-        map('n', '<leader>hb', function() gs.blame_line{full=true} end, {desc='blame_line'})
-        map('n', '<leader>tb', gs.toggle_current_line_blame, {desc='toggle_current_line_blame'})
-        map('n', '<leader>hd', gs.diffthis, {desc='diffthis'})
-        map('n', '<leader>hD', function() gs.diffthis('~') end, {desc='diffthis ~'})
-        map('n', '<leader>td', gs.toggle_deleted, {desc='toggle_deleted'})
-
-        -- Text object
-        map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-      end,
-      --]]
-      --}}}
-    },
-  },
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
@@ -221,6 +144,115 @@ require('lazy').setup({
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
+  --   {
+  --     -- Adds git releated signs to the gutter, as well as utilities for managing changes
+  --     'lewis6991/gitsigns.nvim',
+  --     opts = {
+  --       -- See `:help gitsigns.txt`
+  --       signs = {
+  --         add = { text = '+' },
+  --         change = { text = '~' },
+  --         delete = { text = '_' },
+  --         topdelete = { text = '‾' },
+  --         changedelete = { text = '~' },
+  --       },
+  -- 
+  --       on_attach = function(bufnr)
+  --         vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+  --         vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
+  --         vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
+  --       end,
+  -- 
+  --       --[[ {{{
+  --       on_attach = function(bufnr)
+  --         if vim.api.nvim_buf_get_name(bufnr):match('<PATTERN>') then
+  --           -- Don't attach to specific buffers whose name matches a pattern
+  --           return false
+  --         end
+  -- 
+  --         -- Setup keymaps
+  --         --vim.api.nvim_buf_set_keymap(bufnr, 'n', 'hs', '<cmd>lua require"gitsigns".stage_hunk()<CR>', {})
+  --         vim.api.nvim_buf_set_keymap(bufnr, 'n', 'hs', require('gitsigns').stage_hunk, { desc = '[H]unk [S]tage' })
+  --       end,
+  --       --]]
+  --       --}}}
+  -- 
+  --       -- From: https://github.com/omerxx/dotfiles/blob/master/nvim/init.lua {{{
+  --       --       https://www.youtube.com/watch?v=IyBAuDPzdFY
+  --       --[[
+  --       on_attach = function(bufnr)
+  --         local gs = package.loaded.gitsigns
+  -- 
+  --         local function map(mode, l, r, opts)
+  --           opts = opts or {}
+  --           opts.buffer = bufnr
+  --           vim.keymap.set(mode, l, r, opts)
+  --         end
+  -- 
+  --         -- Navigation
+  --         map('n', ']c', function()
+  --           if vim.wo.diff then return ']c' end
+  --           vim.schedule(function() gs.next_hunk() end)
+  --           return '<Ignore>'
+  --         end, {expr=true, desc='next hunk'})
+  -- 
+  --         map('n', '[c', function()
+  --           if vim.wo.diff then return '[c' end
+  --           vim.schedule(function() gs.prev_hunk() end)
+  --           return '<Ignore>'
+  --         end, {expr=true, desc='previous hunk'})
+  -- 
+  --         -- Actions
+  --         map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>')
+  --         map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
+  --         map('n', '<leader>hS', gs.stage_buffer, {desc='stage buffer'})
+  --         map('n', '<leader>ha', gs.stage_hunk, {desc='stage hunk'})
+  --         map('n', '<leader>hu', gs.undo_stage_hunk, {desc='undo_stage_hunk'})
+  --         map('n', '<leader>hR', gs.reset_buffer, {desc='reset_buffer'})
+  --         map('n', '<leader>hp', gs.preview_hunk, {desc='preview_hunk'})
+  --         map('n', '<leader>hb', function() gs.blame_line{full=true} end, {desc='blame_line'})
+  --         map('n', '<leader>tb', gs.toggle_current_line_blame, {desc='toggle_current_line_blame'})
+  --         map('n', '<leader>hd', gs.diffthis, {desc='diffthis'})
+  --         map('n', '<leader>hD', function() gs.diffthis('~') end, {desc='diffthis ~'})
+  --         map('n', '<leader>td', gs.toggle_deleted, {desc='toggle_deleted'})
+  -- 
+  --         -- Text object
+  --         map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+  --       end,
+  --       --]]
+  --       --}}}
+  --     },
+  --   },
+  {
+    -- Adds git related signs to the gutter, as well as utilities for managing changes
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      -- See `:help gitsigns.txt`
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      },
+      on_attach = function(bufnr)
+        vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
+
+        -- don't override the built-in and fugitive keymaps
+        local gs = package.loaded.gitsigns
+        vim.keymap.set({'n', 'v'}, ']c', function()
+          if vim.wo.diff then return ']c' end
+          vim.schedule(function() gs.next_hunk() end)
+          return '<Ignore>'
+        end, {expr=true, buffer = bufnr, desc = "Jump to next hunk"})
+        vim.keymap.set({'n', 'v'}, '[c', function()
+          if vim.wo.diff then return '[c' end
+          vim.schedule(function() gs.prev_hunk() end)
+          return '<Ignore>'
+        end, {expr=true, buffer = bufnr, desc = "Jump to previous hunk"})
+      end,
+    },
+  },
 
   {
     -- Theme inspired by Atom
@@ -263,19 +295,24 @@ require('lazy').setup({
   { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
-
-  -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-  -- Only load if `make` is available. Make sure you have the system
-  -- requirements installed.
   {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    -- NOTE: If you are having trouble with this installation,
-    --       refer to the README for telescope-fzf-native for more instructions.
-    build = 'make',
-    cond = function()
-      return vim.fn.executable 'make' == 1
-    end,
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      -- Fuzzy Finder Algorithm which requires local dependencies to be built.
+      -- Only load if `make` is available. Make sure you have the system
+      -- requirements installed.
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        -- NOTE: If you are having trouble with this installation,
+        --       refer to the README for telescope-fzf-native for more instructions.
+        build = 'make',
+        cond = function()
+          return vim.fn.executable 'make' == 1
+        end,
+      },
+    },
   },
 
   {
@@ -803,13 +840,14 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]resume' })
 -- }}} [[ Configure Telescope ]]
 
 -- [[ Configure Treesitter ]] {{{
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'lua', 'python', 'vimdoc', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
@@ -895,7 +933,7 @@ local on_attach = function(_, bufnr)
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+  nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
   nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
   nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
   nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
