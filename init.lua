@@ -462,7 +462,7 @@ vim.opt.termguicolors=true    -- Use highlight-guifg and highlight-guibg attribu
 
 -- Time out on key codes but not mappings.
 -- Basically this makes terminal Vim work sanely.
-vim.opt.timeout=false
+--vim.opt.timeout=false -- Must use timeout=true for 'folke/which-key.nvim' plugin to work.
 vim.opt.ttimeout=true
 vim.opt.ttimeoutlen=10
 
