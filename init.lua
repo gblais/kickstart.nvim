@@ -144,6 +144,7 @@ require('lazy').setup({
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
+
   --   {
   --     -- Adds git releated signs to the gutter, as well as utilities for managing changes
   --     'lewis6991/gitsigns.nvim',
@@ -359,6 +360,22 @@ require('lazy').setup({
 
   -- Vim sessions
   'tpope/vim-obsession',
+
+  -- file managing , picker etc
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup {}
+      local api = require("nvim-tree.api")
+      vim.keymap.set('n', '<leader>t', api.tree.toggle, { desc = 'Toggle nvimtree' })
+      vim.keymap.set('n', '<leader>f', api.tree.focus, { desc = 'Focus nvimtree' })
+    end,
+  },
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
@@ -1054,6 +1071,49 @@ cmp.setup {
   },
 }
 -- }}} [[ Configure nvim-cmp ]]
+
+-- [[ Configure nvim-tree ]] {{{
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- set termguicolors to enable highlight groups
+--vim.opt.termguicolors = true
+
+local function nvimtree_on_attach(bufnr)
+  local api = require "nvim-tree.api"
+
+  local function opts(desc)
+    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  -- default mappings
+  api.config.mappings.default_on_attach(bufnr)
+
+  -- custom mappings
+  vim.keymap.set('n', '<c-u>', api.tree.change_root_to_parent,        opts('Up'))
+  vim.keymap.set('n', '?',     api.tree.toggle_help,                  opts('Help'))
+end
+
+-- pass to setup along with your other options
+require("nvim-tree").setup {
+  sort_by = "case_sensitive",
+  view = {
+    width = 50,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+  on_attach = nvimtree_on_attach,
+  update_focused_file = {
+    enable = true,
+    update_root = false,
+  },
+}
+-- }}} nvim-tree
 
 -- Highlights {{{
 
