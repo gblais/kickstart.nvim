@@ -285,7 +285,21 @@ require('lazy').setup({
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
     main = "ibl",
-    opts = {},
+    opts = {
+       -- indent = { char = "▏" },
+       -- indent = { char = "┆" },
+       -- indent = { char = "│" }, -- box drawings light vertical
+       -- indent = { char = "⸾" }, -- wiggly vertical line
+       -- indent = { char = "⁞" }, -- vertical four dots
+       -- indent = { char = "⸽" }, -- vertical six dots
+       -- indent = { char = "⎸" }, -- left vertical box line
+       -- indent = { char = "⎹" }, -- right vertical box line
+       -- indent = { char = "|" }, -- vertical line
+       -- indent = { char = "┊" }, -- box drawings light quadruple dash vertical
+       -- indent = { char = "⋮" }, -- vertical ellipsis
+       indent = { char = "╎" }, -- box drawings light double dash vertical
+       -- indent = { char = "￨" }, -- halfwidth forms light vertical
+    },
   },
 
   -- "gc" to comment visual regions/lines
@@ -333,13 +347,15 @@ require('lazy').setup({
       'inkarkat/vim-ingo-library' -- needed by vim-mark
     },
     config = function()
+      -- enable the automatic restore of marks from a previous Vim session.
+      vim.api.nvim_set_var('mwAutoLoadMarks', 1)
       -- In Mark plugin, replace conflicting maps.
       -- Don't use \n and \# used by NerdTree.  Replace with ,,n and ,,#.
       -- Don't use \r used by coc, replace with ,,r.
       vim.keymap.set('n', '\\c', "<Plug>MarkClear")
       vim.keymap.set('n', '\\p', "<Plug>MarkSearchCurrentPrev")
-      vim.keymap.set('x', '\\r', "<Plug>MarkRegex")
-      vim.keymap.set('n', '\\r', "<Plug>MarkRegex")
+      vim.keymap.set('x', '\\X', "<Plug>MarkRegex")
+      vim.keymap.set('n', '\\X', "<Plug>MarkRegex")
       vim.keymap.set('n', '\\?', "<Plug>MarkSearchAnyPrev")
       vim.keymap.set('n', '\\/', "<Plug>MarkSearchAnyNext")
       vim.keymap.set('n', '\\*', "<Plug>MarkSearchCurrentNext")
@@ -661,9 +677,9 @@ vim.keymap.set('n', '=-', 'V`]=')
 --nnoremap J mzJ`z
 
 -- XML
-vim.keymap.set('v', '<Leader>px', '   !xmllint --format -<CR>')
-vim.keymap.set('n', '<Leader>px', '  !!xmllint --format -<CR>')
-vim.keymap.set('n', '<Leader>pxa', ':%!xmllint --format -<CR>')
+vim.keymap.set('v', '<Leader>x',  '  !xmllint --format -<CR>')
+vim.keymap.set('n', '<Leader>xl', ' !!xmllint --format -<CR>')
+vim.keymap.set('n', '<Leader>xa', ':%!xmllint --format -<CR>')
 
 -- command line maps to edit line just like in a shell command line.
 vim.keymap.set('c', '<C-A>', '<Home>')
@@ -675,7 +691,7 @@ vim.keymap.set('c', '<C-k>', '<C-\\>estrpart(getcmdline(),0,getcmdpos()-1)<CR>')
 vim.keymap.set('c', '<C-D>', '<DEL>')
 
 -- Make timestamps readable in SWItrc logs
-vim.keymap.set('n', '<leader>d', ':g/^20/s/\\(....\\)\\(..\\)\\(..\\)\\(..\\)\\(..\\)\\(..\\)\\(...\\)/\\1\\/\\2\\/\\3 \\4:\\5:\\6.\\7<cr>')
+--vim.keymap.set('n', '<leader>d', ':g/^20/s/\\(....\\)\\(..\\)\\(..\\)\\(..\\)\\(..\\)\\(..\\)\\(...\\)/\\1\\/\\2\\/\\3 \\4:\\5:\\6.\\7<cr>')
 
 -- do not wrap text
 vim.keymap.set('n', '=t0', ':set textwidth=0<cr>')
@@ -787,9 +803,9 @@ vim.keymap.set('n', '<c-n>', ':cn<cr>')
 vim.keymap.set('n', '<c-p>', ':cp<cr>')
 
 -- format into human-readable json
-vim.keymap.set('v', '<Leader>pj',    '!python3 -mjson.tool<cr>')
-vim.keymap.set('n', '<Leader>pj',   '!!python3 -mjson.tool<cr>')
-vim.keymap.set('n', '<Leader>pja', ':%!python3 -mjson.tool<cr>')
+vim.keymap.set('v', '<Leader>j',    '!python3 -mjson.tool<cr>')
+vim.keymap.set('n', '<Leader>jl',  '!!python3 -mjson.tool<cr>')
+vim.keymap.set('n', '<Leader>ja', ':%!python3 -mjson.tool<cr>')
 
 -- change local directory to where current file is located.
 vim.keymap.set('n', '<leader>.', ':if expand(\'%:p\') !~ \'://\' | :lchdir %:p:h | endif<cr>')
