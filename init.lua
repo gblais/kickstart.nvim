@@ -126,7 +126,8 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
-
+  -- Show a lightbulb icon next to a quickfix suggestion by lsp.
+  { 'kosayoda/nvim-lightbulb' },
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -436,6 +437,26 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>t', api.tree.toggle, { desc = 'Toggle nvimtree' })
       vim.keymap.set('n', '<leader>f', api.tree.focus, { desc = 'Focus nvimtree' })
     end,
+  },
+
+  -- To work well with 'navigator' tmux plugin.
+  {
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+    },
+    keys = {
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      --{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+      { "<c-^>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+    },
   },
 
   -- GitHub CoPilot
@@ -1164,6 +1185,12 @@ mason_lspconfig.setup_handlers {
   end,
 }
 -- }}} [[ Configure LSP ]]
+
+-- [[ Configure nvim lightbulb ]] {{{
+require("nvim-lightbulb").setup({
+  autocmd = { enabled = true }
+})
+-- }}} [[ Configure nvim lightbulb ]]
 
 -- [[ Configure nvim-cmp ]] {{{
 -- See `:help cmp`
