@@ -1236,6 +1236,13 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
+    -- Add <C-g> mapping for accepting completion with copilot.vim.
+    ['<C-g>'] = cmp.mapping(function(fallback)
+      vim.api.nvim_feedkeys(vim.fn['copilot#Accept'](vim.api.nvim_replace_termcodes('<Tab>', true, true, true)), 'n', true)
+    end)
+  },
+  experimental = {
+    ghost_text = false -- this feature conflict with copilot.vim's preview.
   },
   sources = {
     { name = 'nvim_lsp' },
