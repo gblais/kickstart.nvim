@@ -154,91 +154,91 @@ vim.opt.scrolloff = 10
 -- [[ Setting more options ]] {{{
 -- Set highlight on search
 vim.opt.hlsearch = false
-vim.opt.autoindent=true       -- Copy indent from current line when starting a new line.
-vim.opt.belloff='all'         -- Turn off bell for everything.
-vim.opt.colorcolumn='+1'      -- Highlight column at textwidth.
-vim.opt.complete='.,w,b,u,t'  -- Better Completion
+vim.opt.autoindent = true         -- Copy indent from current line when starting a new line.
+vim.opt.belloff = 'all'           -- Turn off bell for everything.
+vim.opt.colorcolumn = '+1'        -- Highlight column at textwidth.
+vim.opt.complete = '.,w,b,u,t'    -- Better Completion
 -- Set completeopt to have a better completion experience
 -- vim.opt.completeopt = 'menuone,noselect'
-vim.opt.completeopt='longest,menuone,preview'
-vim.opt.cpoptions:append('J') -- Two spaces after a sentence.
-vim.opt.encoding='utf-8'
-vim.opt.expandtab=true        -- Insert spaces instead of real <tab> characters.
-vim.opt.fillchars='diff:⣿,vert:┃,stl:='
-vim.opt.formatoptions='qrn1j'
-vim.opt.hidden=true           -- Allow modified buffers to be hidden.
-vim.opt.history=1000          -- History of ":" commands.
-vim.opt.ignorecase=true       -- Ignore case when searching.
-vim.opt.laststatus=2          -- Always show status line.
-vim.opt.lazyredraw=true       -- Don't redraw while executing macros, registers, commands.
-vim.opt.linebreak=true        -- Wrap long lines at a character in 'breakat' rather
-                              -- than last char that fits on the screen.
-vim.opt.list=true             -- Show tabs, end-of-line.
+vim.opt.completeopt = 'longest,menuone,preview'
+vim.opt.cpoptions:append 'J'      -- Two spaces after a sentence.
+vim.opt.encoding = 'utf-8'
+vim.opt.expandtab = true          -- Insert spaces instead of real <tab> characters.
+vim.opt.fillchars = 'diff:⣿,vert:┃,stl:='
+vim.opt.formatoptions = 'qrn1j'
+vim.opt.hidden = true             -- Allow modified buffers to be hidden.
+vim.opt.history = 1000            -- History of ":" commands.
+vim.opt.ignorecase = true         -- Ignore case when searching.
+vim.opt.laststatus = 2            -- Always show status line.
+vim.opt.lazyredraw = true         -- Don't redraw while executing macros, registers, commands.
+vim.opt.linebreak = true          -- Wrap long lines at a character in 'breakat' rather
+                                  -- than last char that fits on the screen.
+vim.opt.list = true               -- Show tabs, end-of-line.
 
 -- Show tabs, end-of-line, line continuation.
-vim.opt.listchars='tab:▸\\ ,eol:¬,extends:❯,precedes:❮'
+vim.opt.listchars = 'tab:▸\\ ,eol:¬,extends:❯,precedes:❮'
 -- Add < and > to matchpairs for html editing.
-vim.opt.matchpairs='(:),{:},[:],<:>'
+vim.opt.matchpairs = '(:),{:},[:],<:>'
 
-vim.opt.modeline=true         -- Enable vim modeline by default.
-vim.opt.mouse='a'             -- Allow mouse use even in a xterm, in tmux.
-vim.opt.equalalways=false     -- Do not keep windows the same height when splitting.
-vim.opt.number=true           -- Show line numbers.
-vim.opt.relativenumber=true   -- Show relative line numbers around current line.
-vim.opt.ruler=true            -- Show line, column numbers, cursor position.
-vim.opt.scrolloff=0           -- Show NO context above/below cursorline.
-vim.opt.shiftround=true       -- Round indent to multiple of 'shiftwidth'.
-vim.opt.shiftwidth=4          -- Number of spaces shifted with >> and <<.
-vim.opt.showbreak='↪'         -- String to put at the start of wrapped lines.
-vim.opt.showcmd=true          -- Show number of selected lines in visual mode.
-vim.opt.sidescroll=1          -- Scroll horizontally 1 column at a time.
-vim.opt.sidescrolloff=0       -- Scroll horizontally all the way to the edge.
-vim.opt.smartcase=true        -- Override ignorecase when capitals used in search.
-vim.opt.splitbelow=true       -- Put new window below current one when splitting.
-vim.opt.splitright=true       -- Put new window right of the current one when splitting.
-vim.opt.synmaxcol=800         -- Don't try to highlight lines longer than 800 characters.
-vim.opt.tabstop=4             -- Number of spaces for a tab.
-vim.opt.termguicolors=true    -- Use highlight-guifg and highlight-guibg attributes
-                              -- in the terminal (thus using 24-bit color).
-                              -- NOTE: You should make sure your terminal supports this
---vim.opt.termwinscroll=50000   -- keep 50k lines in a terminal (default is 10k)
+vim.opt.modeline = true           -- Enable vim modeline by default.
+vim.opt.mouse = 'a'               -- Allow mouse use even in a xterm, in tmux.
+vim.opt.equalalways = false       -- Do not keep windows the same height when splitting.
+vim.opt.number = true             -- Show line numbers.
+vim.opt.relativenumber = true     -- Show relative line numbers around current line.
+vim.opt.ruler = true              -- Show line, column numbers, cursor position.
+vim.opt.scrolloff = 0             -- Show NO context above/below cursorline.
+vim.opt.shiftround = true         -- Round indent to multiple of 'shiftwidth'.
+vim.opt.shiftwidth = 4            -- Number of spaces shifted with >> and <<.
+vim.opt.showbreak = '↪'           -- String to put at the start of wrapped lines.
+vim.opt.showcmd = true            -- Show number of selected lines in visual mode.
+vim.opt.sidescroll = 1            -- Scroll horizontally 1 column at a time.
+vim.opt.sidescrolloff = 0         -- Scroll horizontally all the way to the edge.
+vim.opt.smartcase = true          -- Override ignorecase when capitals used in search.
+vim.opt.splitbelow = true         -- Put new window below current one when splitting.
+vim.opt.splitright = true         -- Put new window right of the current one when splitting.
+vim.opt.synmaxcol = 800           -- Don't try to highlight lines longer than 800 characters.
+vim.opt.tabstop = 4               -- Number of spaces for a tab.
+vim.opt.termguicolors = true      -- Use highlight-guifg and highlight-guibg attributes
+                                  -- in the terminal (thus using 24-bit color).
+                                  -- NOTE: You should make sure your terminal supports this
+--vim.opt.termwinscroll = 50000   -- keep 50k lines in a terminal (default is 10k)
 
 -- Time out on key codes but not mappings.
 -- Basically this makes terminal Vim work sanely.
---vim.opt.timeout=false -- Must use timeout=true for 'folke/which-key.nvim' plugin to work.
-vim.opt.ttimeout=true
-vim.opt.ttimeoutlen=10
+--vim.opt.timeout = false         -- Must use timeout=true for 'folke/which-key.nvim' plugin to work.
+vim.opt.ttimeout = true
+vim.opt.ttimeoutlen = 10
 
 -- Set title to 'titlestring' if terminal supports it.
 -- Note that this doesn't work within tmux.
-vim.opt.title=true
+vim.opt.title = true
 
 -- Indicates a fast terminal connection.
 -- Enables extra chars at end of line that wrap, and helps copy/paste with mouse.
-vim.opt.ttyfast=true
+vim.opt.ttyfast = true
 
-vim.opt.visualbell=true     -- Use a visual bell instead of beeping.
-vim.opt.wmh=0               -- Set the minimum window height to 0.
-vim.opt.wmw=0               -- Set the minimum window width to 0.
+vim.opt.visualbell = true         -- Use a visual bell instead of beeping.
+vim.opt.wmh = 0                   -- Set the minimum window height to 0.
+vim.opt.wmw = 0                   -- Set the minimum window width to 0.
 
-vim.opt.ignorecase=true     -- Ignore case when searching.
-vim.opt.smartcase=true      -- Override ignorecase when capitals used in search.
-vim.opt.incsearch=true      -- Show where the pattern matches as it is typed.
-vim.opt.showmatch=true      -- Briefly jump to matching bracket when insert one.
-vim.opt.hlsearch=true       -- Hilight matching search pattern.
---set gdefault           " :substitute flag 'g' is default on, :s///g off.
+vim.opt.ignorecase = true         -- Ignore case when searching.
+vim.opt.smartcase = true          -- Override ignorecase when capitals used in search.
+vim.opt.incsearch = true          -- Show where the pattern matches as it is typed.
+vim.opt.showmatch = true          -- Briefly jump to matching bracket when insert one.
+vim.opt.hlsearch = true           -- Hilight matching search pattern.
+--vim.opt.gdefault = false        -- when true the :substitute flag 'g' is on by default, :s///g.
 
-vim.opt.scrolloff=0         -- Show NO context above/below cursorline.
-vim.opt.sidescroll=1        -- Scroll horizontally 1 column at a time.
---set sidescrolloff=10   " Keep 10 chars of context when side scrolling.
-vim.opt.sidescrolloff=0     -- Scroll horizontally all the way to the edge.
+vim.opt.scrolloff = 0             -- Show NO context above/below cursorline.
+vim.opt.sidescroll = 1            -- Scroll horizontally 1 column at a time.
+--vim.opt.sidescrolloff = 10      -- Keep 10 chars of context when side scrolling.
+vim.opt.sidescrolloff = 0         -- Scroll horizontally all the way to the edge.
 
 -- Allow virtual editing in Visual block mode (e.g. allow to go pass end of line).
-vim.opt.virtualedit:append('block')
+vim.opt.virtualedit:append 'block'
 
 -- Cursorline {{{
 -- Only show cursorline in the current window and in normal mode.
-vim.opt.cursorline=true
+vim.opt.cursorline = true
 vim.cmd [[
 augroup cline
     au!
@@ -359,7 +359,7 @@ vim.keymap.set('n', '<leader>W', ':set wrap!<cr>')
 vim.keymap.set('n', '<leader>l', ':set list!<cr>')
 
 -- Remove trailing whitespaces (and clear search pattern).
-vim.keymap.set('n', '<leader>ww', 'mz:%s/\\s\\+$//<cr>:let @/=\'\'<cr>`z')
+vim.keymap.set('n', '<leader>ww', "mz:%s/\\s\\+$//<cr>:let @/=''<cr>`z")
 
 -- "Uppercase word" mapping.
 --
@@ -415,8 +415,8 @@ vim.keymap.set('n', '=-', 'V`]=')
 --nnoremap J mzJ`z
 
 -- XML
-vim.keymap.set('v', '<Leader>x',  '  !xmllint --format -<CR>')
-vim.keymap.set('n', '<Leader>xl', ' !!xmllint --format -<CR>')
+vim.keymap.set('v', '<Leader>x',    '!xmllint --format -<CR>')
+vim.keymap.set('n', '<Leader>xl',  '!!xmllint --format -<CR>')
 vim.keymap.set('n', '<Leader>xa', ':%!xmllint --format -<CR>')
 
 -- command line maps to edit line just like in a shell command line.
@@ -546,7 +546,7 @@ vim.keymap.set('n', '<Leader>jl',  '!!python3 -mjson.tool<cr>')
 vim.keymap.set('n', '<Leader>ja', ':%!python3 -mjson.tool<cr>')
 
 -- change local directory to where current file is located.
-vim.keymap.set('n', '<leader>.', ':if expand(\'%:p\') !~ \'://\' | :lchdir %:p:h | endif<cr>')
+vim.keymap.set('n', '<leader>.', ":if expand('%:p') !~ '://' | :lchdir %:p:h | endif<cr>")
 
 -- While in a terminal (Terminal-Job mode), press <Esc> to switch to Terminal-Normal mode
 vim.keymap.set('t', '<Esc>', '<C-W>N')
@@ -866,7 +866,7 @@ require('lazy').setup {
       -- Useful for getting pretty icons, but requires special font.
       --  If you already have a Nerd Font, or terminal set up with fallback fonts
       --  you can enable this
-      { 'nvim-tree/nvim-web-devicons' }
+      { 'nvim-tree/nvim-web-devicons' },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -1158,10 +1158,12 @@ require('lazy').setup {
     'stevearc/conform.nvim',
     opts = {
       notify_on_error = false,
+      --[
       format_on_save = {
         timeout_ms = 500,
         lsp_fallback = true,
       },
+      --]
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
@@ -1287,11 +1289,11 @@ require('lazy').setup {
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      require('tokyonight').setup({
+      require('tokyonight').setup {
         -- your configuration comes here
         -- or leave it empty to use the default settings
-        style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-        light_style = "day", -- The theme is used when the background is set to light
+        style = 'storm', -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+        light_style = 'day', -- The theme is used when the background is set to light
         transparent = true, -- Enable this to disable setting the background color
         terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
         styles = {
@@ -1302,26 +1304,26 @@ require('lazy').setup {
           functions = {},
           variables = {},
           -- Background styles. Can be "dark", "transparent" or "normal"
-          sidebars = "dark", -- style for sidebars, see below
-          floats = "dark", -- style for floating windows
+          sidebars = 'dark', -- style for sidebars, see below
+          floats = 'dark', -- style for floating windows
         },
-        sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
+        sidebars = { 'qf', 'help' }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
         day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
         hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
         dim_inactive = false, -- dims inactive windows
         lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
-      
+
         --- You can override specific color groups to use other groups or a hex color
         --- function will be called with a ColorScheme table
         ---@param colors ColorScheme
         on_colors = function(colors) end,
-      
+
         --- You can override specific highlights to use other groups or a hex color
         --- function will be called with a Highlights and ColorScheme table
         ---@param highlights Highlights
         ---@param colors ColorScheme
         on_highlights = function(highlights, colors) end,
-      })
+      }
       -- Load the colorscheme here
       vim.cmd.colorscheme 'tokyonight-night'
 
@@ -1405,8 +1407,8 @@ require('lazy').setup {
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 
       -- Code folding with treesitter.
-      vim.opt.foldmethod = "expr"
-      vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+      vim.opt.foldmethod = 'expr'
+      vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
     end,
   },
 
@@ -1429,13 +1431,13 @@ require('lazy').setup {
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   -- { import = 'custom.plugins' },
 
-
   -- Git related plugins
   'tpope/vim-fugitive',
   --'tpope/vim-rhubarb', -- Enables :GBrowse from fugitive.vim to open GitHub URLs.
 
   { -- Show a lightbulb icon next to a quickfix suggestion by lsp.
-    'kosayoda/nvim-lightbulb' },
+    'kosayoda/nvim-lightbulb',
+  },
 
   --[[
   { -- Set lualine as statusline
@@ -1459,26 +1461,26 @@ require('lazy').setup {
     -- See `:help ibl`
     main = 'ibl',
     opts = {
-       -- indent = { char = "▏" },
-       -- indent = { char = "┆" },
-       -- indent = { char = "│" }, -- box drawings light vertical
-       -- indent = { char = "⸾" }, -- wiggly vertical line
-       -- indent = { char = "⁞" }, -- vertical four dots
-       -- indent = { char = "⸽" }, -- vertical six dots
-       -- indent = { char = "⎸" }, -- left vertical box line
-       -- indent = { char = "⎹" }, -- right vertical box line
-       -- indent = { char = "|" }, -- vertical line
-       -- indent = { char = "┊" }, -- box drawings light quadruple dash vertical
-       -- indent = { char = "⋮" }, -- vertical ellipsis
-       indent = { char = "╎" }, -- box drawings light double dash vertical
-       -- indent = { char = "￨" }, -- halfwidth forms light vertical
+      -- indent = { char = '▏' },
+      -- indent = { char = '┆' },
+      -- indent = { char = '│' }, -- box drawings light vertical
+      -- indent = { char = '⸾' }, -- wiggly vertical line
+      -- indent = { char = '⁞' }, -- vertical four dots
+      -- indent = { char = '⸽' }, -- vertical six dots
+      -- indent = { char = '⎸' }, -- left vertical box line
+      -- indent = { char = '⎹' }, -- right vertical box line
+      -- indent = { char = '|' }, -- vertical line
+      -- indent = { char = '┊' }, -- box drawings light quadruple dash vertical
+      -- indent = { char = '⋮' }, -- vertical ellipsis
+      indent = { char = '╎' }, -- box drawings light double dash vertical
+      -- indent = { char = '￨' }, -- halfwidth forms light vertical
     },
   },
 
   { -- Hilight text in different colors.
     'inkarkat/vim-mark',
     dependencies = {
-      'inkarkat/vim-ingo-library' -- needed by vim-mark
+      'inkarkat/vim-ingo-library', -- needed by vim-mark
     },
     config = function()
       -- enable the automatic restore of marks from a previous Vim session.
@@ -1486,38 +1488,38 @@ require('lazy').setup {
       -- In Mark plugin, replace conflicting maps.
       -- Don't use \n and \# used by NerdTree.  Replace with ,,n and ,,#.
       -- Don't use \r used by coc, replace with ,,r.
-      vim.keymap.set('n', '\\c', "<Plug>MarkClear")
-      vim.keymap.set('x', '\\X', "<Plug>MarkRegex")
-      vim.keymap.set('n', '\\X', "<Plug>MarkRegex")
-      --vim.keymap.set('n', '\\?', "<Plug>MarkSearchAnyPrev")
-      vim.keymap.set('n', '<ac-p>', "<Plug>MarkSearchAnyPrev")
-      --vim.keymap.set('n', '\\/', "<Plug>MarkSearchAnyNext")
-      vim.keymap.set('n', '<ac-n>', "<Plug>MarkSearchAnyNext")
-      vim.keymap.set('n', '<a-p>', "<Plug>MarkSearchCurrentPrev")
-      vim.keymap.set('n', '<a-n>', "<Plug>MarkSearchCurrentNext")
-      vim.keymap.set('x', '\\m', "<Plug>MarkSet")
-      vim.keymap.set('n', '\\m', "<Plug>MarkSet")
+      vim.keymap.set('n', '\\c', '<Plug>MarkClear')
+      vim.keymap.set('x', '\\X', '<Plug>MarkRegex')
+      vim.keymap.set('n', '\\X', '<Plug>MarkRegex')
+      --vim.keymap.set('n', '\\?', '<Plug>MarkSearchAnyPrev')
+      vim.keymap.set('n', '<ac-p>', '<Plug>MarkSearchAnyPrev')
+      --vim.keymap.set('n', '\\/', '<Plug>MarkSearchAnyNext')
+      vim.keymap.set('n', '<ac-n>', '<Plug>MarkSearchAnyNext')
+      vim.keymap.set('n', '<a-p>', '<Plug>MarkSearchCurrentPrev')
+      vim.keymap.set('n', '<a-n>', '<Plug>MarkSearchCurrentNext')
+      vim.keymap.set('x', '\\m', '<Plug>MarkSet')
+      vim.keymap.set('n', '\\m', '<Plug>MarkSet')
 
-      vim.keymap.set('n', '\\M', "<Plug>MarkToggle")
-      vim.keymap.set('n', '\\N', "<Plug>MarkAllClear")
+      vim.keymap.set('n', '\\M', '<Plug>MarkToggle')
+      vim.keymap.set('n', '\\N', '<Plug>MarkAllClear')
       --[[
-      vim.keymap.set('n', '<Leader>M', "<Plug>MarkToggle")
-      vim.keymap.set('n', '<Leader>N', "<Plug>MarkAllClear")
-      vim.keymap.set('n', '<Leader>N', "<Plug>MarkConfirmAllClear")
-      vim.keymap.set('n', '<Plug>IgnoreMarkSearchNext', "<Plug>MarkSearchNext")
-      vim.keymap.set('n', '<Plug>IgnoreMarkSearchPrev', "<Plug>MarkSearchPrev")
-      vim.keymap.set('n', '*', "<Plug>MarkSearchOrCurNext")
-      vim.keymap.set('n', '#', "<Plug>MarkSearchOrCurPrev")
-      vim.keymap.set('n', '*', "<Plug>MarkSearchOrAnyNext")
-      vim.keymap.set('n', '#', "<Plug>MarkSearchOrAnyPrev")
-      vim.keymap.set('n', 'n', "<Plug>MarkSearchAnyOrDefaultNext")
-      vim.keymap.set('n', 'N', "<Plug>MarkSearchAnyOrDefaultPrev")
-      vim.keymap.set('n', '*', "<Plug>MarkSearchGroupNext")
-      vim.keymap.set('n', '#', "<Plug>MarkSearchGroupPrev")
-      vim.keymap.set('n', '<Leader>1', "<Plug>MarkSearchGroup1Next")
-      vim.keymap.set('n', '<Leader>!', "<Plug>MarkSearchGroup1Prev")
-      vim.keymap.set('n', '<Leader>+*', "<Plug>MarkSearchUsedGroupNext")
-      vim.keymap.set('n', '<Leader>-*', "<Plug>MarkSearchUsedGroupPrev")
+      vim.keymap.set('n', '<Leader>M', '<Plug>MarkToggle')
+      vim.keymap.set('n', '<Leader>N', '<Plug>MarkAllClear')
+      vim.keymap.set('n', '<Leader>N', '<Plug>MarkConfirmAllClear')
+      vim.keymap.set('n', '<Plug>IgnoreMarkSearchNext', '<Plug>MarkSearchNext')
+      vim.keymap.set('n', '<Plug>IgnoreMarkSearchPrev', '<Plug>MarkSearchPrev')
+      vim.keymap.set('n', '*', '<Plug>MarkSearchOrCurNext')
+      vim.keymap.set('n', '#', '<Plug>MarkSearchOrCurPrev')
+      vim.keymap.set('n', '*', '<Plug>MarkSearchOrAnyNext')
+      vim.keymap.set('n', '#', '<Plug>MarkSearchOrAnyPrev')
+      vim.keymap.set('n', 'n', '<Plug>MarkSearchAnyOrDefaultNext')
+      vim.keymap.set('n', 'N', '<Plug>MarkSearchAnyOrDefaultPrev')
+      vim.keymap.set('n', '*', '<Plug>MarkSearchGroupNext')
+      vim.keymap.set('n', '#', '<Plug>MarkSearchGroupPrev')
+      vim.keymap.set('n', '<Leader>1', '<Plug>MarkSearchGroup1Next')
+      vim.keymap.set('n', '<Leader>!', '<Plug>MarkSearchGroup1Prev')
+      vim.keymap.set('n', '<Leader>+*', '<Plug>MarkSearchUsedGroupNext')
+      vim.keymap.set('n', '<Leader>-*', '<Plug>MarkSearchUsedGroupPrev')
       --]]
     end,
   },
@@ -1533,38 +1535,38 @@ require('lazy').setup {
 
   'mbbill/undotree',
 
-  { -- file managing , picker etc
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
+  { -- file managing, picker, etc
+    'nvim-tree/nvim-tree.lua',
+    version = '*',
     lazy = false,
     dependencies = {
-      "nvim-tree/nvim-web-devicons",
+      'nvim-tree/nvim-web-devicons',
     },
     config = function()
       --vim.g.nvim_tree_respect_buf_cwd = 1
-      require("nvim-tree").setup {}
-      local api = require("nvim-tree.api")
+      require('nvim-tree').setup {}
+      local api = require 'nvim-tree.api'
       vim.keymap.set('n', '<leader>tt', api.tree.toggle, { desc = 'Toggle nvimtree' })
       vim.keymap.set('n', '<leader>tf', api.tree.focus, { desc = 'Focus nvimtree' })
     end,
   },
 
   { -- To work well with 'navigator' tmux plugin.
-    "christoomey/vim-tmux-navigator",
+    'christoomey/vim-tmux-navigator',
     cmd = {
-      "TmuxNavigateLeft",
-      "TmuxNavigateDown",
-      "TmuxNavigateUp",
-      "TmuxNavigateRight",
-      "TmuxNavigatePrevious",
+      'TmuxNavigateLeft',
+      'TmuxNavigateDown',
+      'TmuxNavigateUp',
+      'TmuxNavigateRight',
+      'TmuxNavigatePrevious',
     },
     keys = {
-      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { '<c-h>', '<cmd><C-U>TmuxNavigateLeft<cr>' },
+      { '<c-j>', '<cmd><C-U>TmuxNavigateDown<cr>' },
+      { '<c-k>', '<cmd><C-U>TmuxNavigateUp<cr>' },
+      { '<c-l>', '<cmd><C-U>TmuxNavigateRight<cr>' },
       --{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-      { "<c-^>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+      { '<c-^>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
     },
   },
 
@@ -1574,9 +1576,9 @@ require('lazy').setup {
 -- }}} [[ Configure and install plugins ]]
 
 -- [[ Configure nvim lightbulb ]] {{{
-require("nvim-lightbulb").setup({
-  autocmd = { enabled = true }
-})
+require('nvim-lightbulb').setup {
+  autocmd = { enabled = true },
+}
 -- }}} [[ Configure nvim lightbulb ]]
 
 -- [[ Configure nvim-tree ]] {{{
@@ -1588,23 +1590,23 @@ vim.g.loaded_netrwPlugin = 1
 --vim.opt.termguicolors = true
 
 local function nvimtree_on_attach(bufnr)
-  local api = require "nvim-tree.api"
+  local api = require 'nvim-tree.api'
 
   local function opts(desc)
-    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
   end
 
   -- default mappings
   api.config.mappings.default_on_attach(bufnr)
 
   -- custom mappings
-  vim.keymap.set('n', '<c-u>', api.tree.change_root_to_parent,        opts('Up'))
-  vim.keymap.set('n', '?',     api.tree.toggle_help,                  opts('Help'))
+  vim.keymap.set('n', '<c-u>', api.tree.change_root_to_parent, opts 'Up')
+  vim.keymap.set('n', '?', api.tree.toggle_help, opts 'Help')
 end
 
 -- pass to setup along with your other options
-require("nvim-tree").setup {
-  sort_by = "case_sensitive",
+require('nvim-tree').setup {
+  sort_by = 'case_sensitive',
   view = {
     width = 50,
   },
