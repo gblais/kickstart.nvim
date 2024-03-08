@@ -1328,7 +1328,7 @@ require('lazy').setup {
       vim.cmd.colorscheme 'tokyonight-night'
 
       -- You can configure highlights by doing something like
-      vim.cmd.hi 'Comment gui=none'
+      --vim.cmd.hi 'Comment gui=none'
     end,
   },
 
@@ -1603,9 +1603,6 @@ require('nvim-lightbulb').setup {
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
--- set termguicolors to enable highlight groups
---vim.opt.termguicolors = true
 
 local function nvimtree_on_attach(bufnr)
   local api = require 'nvim-tree.api'
