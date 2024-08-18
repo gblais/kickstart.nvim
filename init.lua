@@ -1329,7 +1329,7 @@ require('lazy').setup {
       vim.cmd.colorscheme 'tokyonight-night'
 
       -- You can configure highlights by doing something like
-      vim.cmd.hi 'Comment gui=none'
+      --vim.cmd.hi 'Comment gui=none'
     end,
   },
 
@@ -1366,6 +1366,7 @@ require('lazy').setup {
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
+      --[[
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
@@ -1379,6 +1380,7 @@ require('lazy').setup {
       statusline.section_location = function()
         return '%2l:%-2v'
       end
+      --]]
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
@@ -1440,21 +1442,37 @@ require('lazy').setup {
     'kosayoda/nvim-lightbulb',
   },
 
-  --[[
   { -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
-        theme = 'onedark',
-        component_separators = '|',
-        section_separators = '',
+        icons_enabled = true,
+        --theme = 'auto',
+        --theme = 'ayu_dark',
+        --theme = 'material',
+        theme = 'moonfly',
+        --theme = 'nightfly',
+        component_separators = { left = '', right = '' },
+        --component_separators = '|',
+        section_separators = { left = '', right = '' },
+        --section_separators = '',
+        disabled_filetypes = {
+          statusline = {},
+          winbar = {},
+        },
+        ignore_focus = {},
+        always_divide_middle = true,
+        globalstatus = false,
+        refresh = {
+          statusline = 1000,
+          tabline = 1000,
+          winbar = 1000,
+        },
         path = 1,
       },
     },
   },
-  --]]
 
   { -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
@@ -1586,9 +1604,6 @@ require('nvim-lightbulb').setup {
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
--- set termguicolors to enable highlight groups
---vim.opt.termguicolors = true
 
 local function nvimtree_on_attach(bufnr)
   local api = require 'nvim-tree.api'
