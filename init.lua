@@ -817,23 +817,40 @@ require('lazy').setup {
   -- Then, because we use the `config` key, the configuration only runs
   -- after the plugin has been loaded:
   --  config = function() ... end
-
-  { -- Useful plugin to show you pending keybinds.
-    'folke/which-key.nvim',
-    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-    config = function() -- This is the function that runs, AFTER loading
-      require('which-key').setup()
-
-      -- Document existing key chains
-      require('which-key').register {
-        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-        ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-      }
-    end,
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps (which-key)",
+      },
+    },
   },
+  --{ -- Useful plugin to show you pending keybinds.
+  --  'folke/which-key.nvim',
+  --  event = 'VimEnter', -- Sets the loading event to 'VimEnter'
+  --  config = function() -- This is the function that runs, AFTER loading
+  --    require('which-key').setup()
+  --
+  --    -- Document existing key chains
+  --    require('which-key').register {
+  --      ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
+  --      ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+  --      ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
+  --      ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
+  --      ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+  --    }
+  --  end,
+  --},
 
   -- NOTE: Plugins can specify dependencies.
   --
@@ -1084,7 +1101,16 @@ require('lazy').setup {
       local servers = {
         clangd = {},
         -- gopls = {},
-        pyright = {},
+        pyright = {
+          settings = {
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+              },
+            },
+          },
+        },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -1447,15 +1473,19 @@ require('lazy').setup {
     opts = {
       options = {
         icons_enabled = true,
+        -- To set theme and other options while in neovim:
+        --    lua require('lualine').setup({options={theme='dracula',component_separators={left='',right=''},section_separators={left='',right=''}}})
         --theme = 'auto',
         --theme = 'ayu_dark',
         --theme = 'material',
-        theme = 'moonfly',
+        --theme = 'moonfly',
         --theme = 'nightfly',
-        component_separators = { left = '', right = '' },
+        theme = 'dracula',
+        --component_separators = { left = '', right = '' },
         --component_separators = '|',
-        section_separators = { left = '', right = '' },
-        --section_separators = '',
+        component_separators = '',
+        --section_separators = { left = '', right = '' },
+        section_separators = '',
         disabled_filetypes = {
           statusline = {},
           winbar = {},
@@ -1470,6 +1500,26 @@ require('lazy').setup {
         },
         path = 1,
       },
+      sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'filename'},
+        lualine_c = {{'branch', color = { fg = '#bb8800', gui='italic,bold' }}, 'diff', 'diagnostics' },
+        lualine_x = {'encoding', 'fileformat', 'filetype'},
+        lualine_y = {'progress'},
+        lualine_z = {'location'}
+      },
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {'filename'},
+        lualine_c = {{'branch', color = { fg = '#aa7700', gui='italic,bold' }}, 'diff', 'diagnostics' },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {}
+      },
+      tabline = {},
+      winbar = {},
+      inactive_winbar = {},
+      extensions = {},
     },
   },
 
@@ -1590,6 +1640,10 @@ require('lazy').setup {
 
   -- GitHub CoPilot
   'github/copilot.vim',
+
+  -- Display ANSI escape sequences as colors.
+  -- Disable for now, because it seems to conflict with vim-mark.
+  --'powerman/vim-plugin-AnsiEsc',
 }
 -- }}} [[ Configure and install plugins ]]
 
@@ -1653,6 +1707,7 @@ hi NonText guifg=#006000
 "hi CursorLine guibg=#272727
 hi CursorLine guibg=#300000
 hi ColorColumn guibg=#202020
+hi Search guifg=#800080 guibg=#ffc070
 ]]
 
 -- }}} Highlights
