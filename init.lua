@@ -93,7 +93,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]] {{{
 -- See `:help vim.opt`
@@ -1568,7 +1568,7 @@ require('lazy').setup({
         lualine_z = { 'location' },
       },
       inactive_sections = {
-        lualine_a = {},
+        lualine_a = { 'mode' },
         lualine_b = { 'filename' },
         lualine_c = { { 'branch', color = { fg = '#aa7700', gui = 'italic,bold' } }, 'diff', 'diagnostics' },
         lualine_x = {},
