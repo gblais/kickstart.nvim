@@ -1533,7 +1533,13 @@ require('lazy').setup({
       options = {
         icons_enabled = true,
         -- To set theme and other options while in neovim:
-        --    lua require('lualine').setup({options={theme='dracula',component_separators={left='',right=''},section_separators={left='',right=''}}})
+        --    lua require('lualine').setup({
+        --      options = {
+        --        theme = 'dracula',
+        --        component_separators = { left = '', right = '' },
+        --        section_separators = { left = '', right = '' }
+        --      }
+        --    })
         --theme = 'auto',
         --theme = 'ayu_dark',
         --theme = 'material',
