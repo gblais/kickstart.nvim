@@ -1245,6 +1245,9 @@ require('lazy').setup({
     },
     opts = {
       notify_on_error = false,
+      -- Disable formatting on save for all filetypes.
+      format_on_save = nil,
+      --[[
       format_on_save = function(bufnr)
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
@@ -1261,6 +1264,7 @@ require('lazy').setup({
           lsp_format = lsp_format_opt,
         }
       end,
+      --]]
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
@@ -1466,8 +1470,8 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'cpp', 'diff', 'html', 'lua', 'luadoc',
-        'python', 'markdown', 'markdown_inline', 'query', 'javascript', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'cpp', 'diff', 'html', 'lua', 'luadoc', 'python',
+        'markdown', 'markdown_inline', 'query', 'javascript', 'vim', 'vimdoc', },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -1552,20 +1556,20 @@ require('lazy').setup({
         path = 1,
       },
       sections = {
-        lualine_a = {'mode'},
-        lualine_b = {'filename'},
-        lualine_c = {{'branch', color = { fg = '#bb8800', gui='italic,bold' }}, 'diff', 'diagnostics' },
-        lualine_x = {'encoding', 'fileformat', 'filetype'},
-        lualine_y = {'progress'},
-        lualine_z = {'location'}
+        lualine_a = { 'mode' },
+        lualine_b = { 'filename' },
+        lualine_c = { { 'branch', color = { fg = '#bb8800', gui = 'italic,bold' } }, 'diff', 'diagnostics' },
+        lualine_x = { 'encoding', 'fileformat', 'filetype' },
+        lualine_y = { 'progress' },
+        lualine_z = { 'location' },
       },
       inactive_sections = {
         lualine_a = {},
-        lualine_b = {'filename'},
-        lualine_c = {{'branch', color = { fg = '#aa7700', gui='italic,bold' }}, 'diff', 'diagnostics' },
+        lualine_b = { 'filename' },
+        lualine_c = { { 'branch', color = { fg = '#aa7700', gui = 'italic,bold' } }, 'diff', 'diagnostics' },
         lualine_x = {},
         lualine_y = {},
-        lualine_z = {}
+        lualine_z = {},
       },
       tabline = {},
       winbar = {},
