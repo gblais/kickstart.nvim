@@ -524,8 +524,10 @@ vim.keymap.set('n', '>', '>')
 --inoremap <c-->< <Esc>ldwF\|pwhvT\|r-r<lxf\|P
 -- Windows Terminal uses ctrl- and ctrl+ to control the font size.
 -- So use ctrl_ instead for the call-flow maps.
-vim.keymap.set('i', '<c-_>>', '<Esc>ldwF|pT|r-ldwf|Pr>bf vt>r-')
-vim.keymap.set('i', '<c-_><', '<Esc>ldwF|pwhvT|r-r<lxf|P')
+--vim.keymap.set('i', '<c-_>>', '<Esc>ldwF|pT|r-ldwf|Pr>bf vt>r-')
+--vim.keymap.set('i', '<c-_><', '<Esc>ldwF|pwhvT|r-r<lxf|P')
+vim.keymap.set('i', '>>', '<Esc>ldwF|pT|r-ldwf|Pr>bf vt>r-')
+vim.keymap.set('i', '<<', '<Esc>ldwF|pwhvT|r-r<lxf|P')
 
 -- |protocol message'ctrl-')               |
 -- will result in
@@ -535,8 +537,10 @@ vim.keymap.set('i', '<c-_><', '<Esc>ldwF|pwhvT|r-r<lxf|P')
 --inoremap <c-->( <esc>F\|maldt\|O<esc>P:s/\(.*\S\)\(\s*\)$/\2\1<cr>:s/\(\s*\)\(\1\)/\1;\2<cr>:s/;\(\s*\)\(.*\)/\2\1<cr>0d$`apT\|jvt\|r-r<kkdd`ajjlR
 -- Windows Terminal uses ctrl- and ctrl+ to control the font size.
 -- So use ctrl_ instead for the call-flow maps.
-vim.keymap.set('i', '<c-_>)', '<esc>F|maldt|O<esc>P:s/\\(.*\\S\\)\\(\\s*\\)$/\\2\\1<cr>:s/\\(\\s*\\)\\(\\1\\)/\\1;\\2<cr>:s/;\\(\\s*\\)\\(.*\\)/\\2\\1<cr>0d$`apT|jvt|r-t|r>kkdd`ajjlR')
-vim.keymap.set('i', '<c-_>(', '<esc>F|maldt|O<esc>P:s/\\(.*\\S\\)\\(\\s*\\)$/\\2\\1<cr>:s/\\(\\s*\\)\\(\\1\\)/\\1;\\2<cr>:s/;\\(\\s*\\)\\(.*\\)/\\2\\1<cr>0d$`apT|jvt|r-r<kkdd`ajjlR')
+--vim.keymap.set('i', '<c-_>)', '<esc>F|maldt|O<esc>P:s/\\(.*\\S\\)\\(\\s*\\)$/\\2\\1<cr>:s/\\(\\s*\\)\\(\\1\\)/\\1;\\2<cr>:s/;\\(\\s*\\)\\(.*\\)/\\2\\1<cr>0d$`apT|jvt|r-t|r>kkdd`ajjlR')
+--vim.keymap.set('i', '<c-_>(', '<esc>F|maldt|O<esc>P:s/\\(.*\\S\\)\\(\\s*\\)$/\\2\\1<cr>:s/\\(\\s*\\)\\(\\1\\)/\\1;\\2<cr>:s/;\\(\\s*\\)\\(.*\\)/\\2\\1<cr>0d$`apT|jvt|r-r<kkdd`ajjlR')
+vim.keymap.set('i', 'LL', '<esc>F|maldt|O<esc>P:s/\\(.*\\S\\)\\(\\s*\\)$/\\2\\1<cr>:s/\\(\\s*\\)\\(\\1\\)/\\1;\\2<cr>:s/;\\(\\s*\\)\\(.*\\)/\\2\\1<cr>0d$`apT|jvt|r-t|r>kkdd`ajjlR')
+vim.keymap.set('i', 'HH', '<esc>F|maldt|O<esc>P:s/\\(.*\\S\\)\\(\\s*\\)$/\\2\\1<cr>:s/\\(\\s*\\)\\(\\1\\)/\\1;\\2<cr>:s/;\\(\\s*\\)\\(.*\\)/\\2\\1<cr>0d$`apT|jvt|r-r<kkdd`ajjlR')
 
 -- Navigate betweenn protocol sections.
 -- |█<right>          |                    |
