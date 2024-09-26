@@ -553,8 +553,10 @@ vim.keymap.set('i', '<c-H>h', '<esc>F|maldt|O<esc>P:s/\\(.*\\S\\)\\(\\s*\\)$/\\2
 -- |                  |█                   |
 --vim.keymap.set('i', '<c-right>', '<esc>f|lR')
 --vim.keymap.set('i', '<c-left>', ' <esc>F|lR')
-vim.keymap.set('i', '<right>', '<esc>f|lR')
-vim.keymap.set('i', '<left>', ' <esc>F|lR')
+--vim.keymap.set('i', '<c-right>', '<esc>f|lR')
+--vim.keymap.set('i', '<c-left>', ' <esc>F|hT|R')
+vim.keymap.set('i', '<c-right>', '<c-o>f|<c-o>l')
+vim.keymap.set('i', '<c-left>', '<c-o>F|<c-o>T|')
 
 -- Go to the next error or match
 vim.keymap.set('n', '<c-n>', ':cn<cr>')
