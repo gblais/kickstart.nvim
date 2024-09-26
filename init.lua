@@ -531,8 +531,8 @@ vim.keymap.set('n', '>', '>')
 -- This doesn't work:
 --vim.keymap.set('i', '<c->>>', '<Esc>ldwF|pT|r-ldwf|Pr>bf vt>r-')
 --vim.keymap.set('i', '<c-<><', '<Esc>ldwF|pwhvT|r-r<lxf|P')
-vim.keymap.set('i', '<c-l>l', '<Esc>ldwF|pT|r-ldwf|Pr>bf vt>r-')
-vim.keymap.set('i', '<c-h>h', '<Esc>ldwF|pwhvT|r-r<lxf|P')
+vim.keymap.set('i', '<c-l><c-l>', '<Esc>ldwF|pT|r-ldwf|Pr>bf vt>r-T|jR')
+vim.keymap.set('i', '<c-h><c-h>', '<Esc>ldwF|pwhvT|r-r<lxf|PT|jR')
 
 -- |protocol message'ctrl-')               |
 -- will result in
@@ -544,8 +544,8 @@ vim.keymap.set('i', '<c-h>h', '<Esc>ldwF|pwhvT|r-r<lxf|P')
 -- So use ctrl_ instead for the call-flow maps.
 --vim.keymap.set('i', '<c-_>)', '<esc>F|maldt|O<esc>P:s/\\(.*\\S\\)\\(\\s*\\)$/\\2\\1<cr>:s/\\(\\s*\\)\\(\\1\\)/\\1;\\2<cr>:s/;\\(\\s*\\)\\(.*\\)/\\2\\1<cr>0d$`apT|jvt|r-t|r>kkdd`ajjlR')
 --vim.keymap.set('i', '<c-_>(', '<esc>F|maldt|O<esc>P:s/\\(.*\\S\\)\\(\\s*\\)$/\\2\\1<cr>:s/\\(\\s*\\)\\(\\1\\)/\\1;\\2<cr>:s/;\\(\\s*\\)\\(.*\\)/\\2\\1<cr>0d$`apT|jvt|r-r<kkdd`ajjlR')
-vim.keymap.set('i', '<c-L>L', '<esc>F|maldt|O<esc>P:s/\\(.*\\S\\)\\(\\s*\\)$/\\2\\1<cr>:s/\\(\\s*\\)\\(\\1\\)/\\1;\\2<cr>:s/;\\(\\s*\\)\\(.*\\)/\\2\\1<cr>0d$`apT|jvt|r-t|r>kkdd`ajjlR')
-vim.keymap.set('i', '<c-H>H', '<esc>F|maldt|O<esc>P:s/\\(.*\\S\\)\\(\\s*\\)$/\\2\\1<cr>:s/\\(\\s*\\)\\(\\1\\)/\\1;\\2<cr>:s/;\\(\\s*\\)\\(.*\\)/\\2\\1<cr>0d$`apT|jvt|r-r<kkdd`ajjlR')
+vim.keymap.set('i', '<c-L>l', '<esc>F|maldt|O<esc>P:s/\\(.*\\S\\)\\(\\s*\\)$/\\2\\1<cr>:s/\\(\\s*\\)\\(\\1\\)/\\1;\\2<cr>:s/;\\(\\s*\\)\\(.*\\)/\\2\\1<cr>0d$`apT|jvt|r-t|r>kkdd`ajjlR')
+vim.keymap.set('i', '<c-H>h', '<esc>F|maldt|O<esc>P:s/\\(.*\\S\\)\\(\\s*\\)$/\\2\\1<cr>:s/\\(\\s*\\)\\(\\1\\)/\\1;\\2<cr>:s/;\\(\\s*\\)\\(.*\\)/\\2\\1<cr>0d$`apT|jvt|r-r<kkdd`ajjlR')
 
 -- Navigate betweenn protocol sections.
 -- |█<right>          |                    |
