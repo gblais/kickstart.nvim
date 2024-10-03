@@ -601,30 +601,30 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- vim-mark {{{
 vim.g.mwDefaultHighlightingPalette = {
-  { ctermbg = "226", ctermfg = "black", guibg = "#ffff00", guifg = "black" },
-  { ctermbg = "196", ctermfg = "black", guibg = "#ff0000", guifg = "black" },
-  { ctermbg = "21" , ctermfg = "white", guibg = "#0030ff", guifg = "white" },
-  { ctermbg = "46" , ctermfg = "black", guibg = "#00ff00", guifg = "black" },
-  { ctermbg = "201", ctermfg = "black", guibg = "#ff00ff", guifg = "black" },
-  { ctermbg = "51" , ctermfg = "black", guibg = "#00ffff", guifg = "black" },
-  { ctermbg = "88" , ctermfg = "white", guibg = "#870000", guifg = "white" },
-  { ctermbg = "208", ctermfg = "black", guibg = "#ff8700", guifg = "black" },
-  { ctermbg = "18" , ctermfg = "white", guibg = "#003087", guifg = "white" },
-  { ctermbg = "22" , ctermfg = "white", guibg = "#005f00", guifg = "white" },
-  { ctermbg = "90" , ctermfg = "white", guibg = "#870087", guifg = "white" },
-  { ctermbg = "36" , ctermfg = "black", guibg = "#00af87", guifg = "black" },
-  { ctermbg = "239", ctermfg = "white", guibg = "#4e4e4e", guifg = "white" },
-  { ctermbg = "202", ctermfg = "black", guibg = "#ff5f00", guifg = "black" },
-  { ctermbg = "131", ctermfg = "black", guibg = "#af5f5f", guifg = "black" },
-  { ctermbg = "113", ctermfg = "black", guibg = "#87d75f", guifg = "black" },
-  { ctermbg = "71" , ctermfg = "white", guibg = "#5faf5f", guifg = "white" },
-  { ctermbg = "192", ctermfg = "black", guibg = "#d7ff87", guifg = "black" },
-  { ctermbg = "99" , ctermfg = "white", guibg = "#875fff", guifg = "white" },
-  { ctermbg = "168", ctermfg = "white", guibg = "#d75f87", guifg = "white" },
-  { ctermbg = "231", ctermfg = "black", guibg = "#ffffff", guifg = "black" },
-  { ctermbg = "227", ctermfg = "black", guibg = "#ffff5f", guifg = "black" },
-  { ctermbg = "49" , ctermfg = "black", guibg = "#00ffaf", guifg = "black" },
-  { ctermbg = "154", ctermfg = "black", guibg = "#afff00", guifg = "black" }
+  { ctermbg = '226', ctermfg = 'black', guibg = '#ffff00', guifg = 'black' },
+  { ctermbg = '196', ctermfg = 'black', guibg = '#ff0000', guifg = 'black' },
+  { ctermbg =  '21', ctermfg = 'white', guibg = '#0030ff', guifg = 'white' },
+  { ctermbg =  '46', ctermfg = 'black', guibg = '#00ff00', guifg = 'black' },
+  { ctermbg = '201', ctermfg = 'black', guibg = '#ff00ff', guifg = 'black' },
+  { ctermbg =  '51', ctermfg = 'black', guibg = '#00ffff', guifg = 'black' },
+  { ctermbg =  '88', ctermfg = 'white', guibg = '#870000', guifg = 'white' },
+  { ctermbg = '208', ctermfg = 'black', guibg = '#ff8700', guifg = 'black' },
+  { ctermbg =  '18', ctermfg = 'white', guibg = '#003087', guifg = 'white' },
+  { ctermbg =  '22', ctermfg = 'white', guibg = '#005f00', guifg = 'white' },
+  { ctermbg =  '90', ctermfg = 'white', guibg = '#870087', guifg = 'white' },
+  { ctermbg =  '36', ctermfg = 'black', guibg = '#00af87', guifg = 'black' },
+  { ctermbg = '239', ctermfg = 'white', guibg = '#4e4e4e', guifg = 'white' },
+  { ctermbg = '202', ctermfg = 'black', guibg = '#ff5f00', guifg = 'black' },
+  { ctermbg = '131', ctermfg = 'black', guibg = '#af5f5f', guifg = 'black' },
+  { ctermbg = '113', ctermfg = 'black', guibg = '#87d75f', guifg = 'black' },
+  { ctermbg =  '71', ctermfg = 'white', guibg = '#5faf5f', guifg = 'white' },
+  { ctermbg = '192', ctermfg = 'black', guibg = '#d7ff87', guifg = 'black' },
+  { ctermbg =  '99', ctermfg = 'white', guibg = '#875fff', guifg = 'white' },
+  { ctermbg = '168', ctermfg = 'white', guibg = '#d75f87', guifg = 'white' },
+  { ctermbg = '231', ctermfg = 'black', guibg = '#ffffff', guifg = 'black' },
+  { ctermbg = '227', ctermfg = 'black', guibg = '#ffff5f', guifg = 'black' },
+  { ctermbg =  '49', ctermfg = 'black', guibg = '#00ffaf', guifg = 'black' },
+  { ctermbg = '154', ctermfg = 'black', guibg = '#afff00', guifg = 'black' },
 }
 -- turn off the creation of the default mappings.
 vim.g.mw_no_mappings = 1
@@ -680,6 +680,7 @@ require('lazy').setup({
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
+      --[[
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
 
@@ -740,6 +741,7 @@ require('lazy').setup({
         -- Text object
         map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'select git hunk' })
       end,
+      --]]
     },
   },
   -- Other gitsigns configuration examples
