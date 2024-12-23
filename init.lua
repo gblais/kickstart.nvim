@@ -1786,7 +1786,17 @@ require('lazy').setup({
   --]]
 
   -- GitHub CoPilot
-  'github/copilot.vim',
+  {
+    'CopilotC-Nvim/CopilotChat.nvim',
+    dependencies = {
+      { 'github/copilot.vim' }, -- or zbirenbaum/copilot.lua
+      { 'nvim-lua/plenary.nvim', branch = 'master' }, -- for curl, log and async functions
+    },
+    opts = {
+      -- See Configuration section for options
+    },
+    -- See Commands section for default commands if you want to lazy load on them
+  },
 
   -- Display ANSI escape sequences as colors.
   -- Disable for now, because it seems to conflict with vim-mark.
@@ -1860,6 +1870,10 @@ require('nvim-tree').setup {
   },
 }
 -- }}} nvim-tree
+
+-- [[ Configure CopilotChat ]] {{{
+vim.keymap.set('n', '<leader>cc', ':CopilotChat<CR>', { noremap = true, silent = true })
+-- }}} [[ Configure CopilotChat ]]
 
 -- Highlights {{{
 
