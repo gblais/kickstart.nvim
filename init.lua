@@ -147,12 +147,12 @@ vim.o.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 --
---  Notice listchars is set using `vim.opt` instead of `vim.o`.
+--  Notice listchars is set using `vim.o. instead of `vim.o`.
 --  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
 --   See `:help lua-options`
 --   and `:help lua-options-guide`
 vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.o.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
@@ -171,92 +171,92 @@ vim.o.confirm = true
 
 -- [[ Setting more options ]] {{{
 -- Set highlight on search
-vim.opt.hlsearch = false
-vim.opt.autoindent = true         -- Copy indent from current line when starting a new line.
-vim.opt.belloff = 'all'           -- Turn off bell for everything.
-vim.opt.colorcolumn = '+1'        -- Highlight column at textwidth.
-vim.opt.complete = '.,w,b,u,t'    -- Better Completion
+vim.o.hlsearch = false
+vim.o.autoindent = true         -- Copy indent from current line when starting a new line.
+vim.o.belloff = 'all'           -- Turn off bell for everything.
+vim.o.colorcolumn = '+1'        -- Highlight column at textwidth.
+vim.o.complete = '.,w,b,u,t'    -- Better Completion
 -- Set completeopt to have a better completion experience
--- vim.opt.completeopt = 'menuone,noselect'
-vim.opt.completeopt = 'longest,menuone,preview'
-vim.opt.cpoptions:append 'J'      -- Two spaces after a sentence.
-vim.opt.encoding = 'utf-8'
-vim.opt.expandtab = true          -- Insert spaces instead of real <tab> characters.
-vim.opt.fillchars = 'diff:⣿,vert:┃,stl:='
-vim.opt.formatoptions = 'qrn1j'
-vim.opt.hidden = true             -- Allow modified buffers to be hidden.
-vim.opt.history = 1000            -- History of ":" commands.
-vim.opt.ignorecase = true         -- Ignore case when searching.
-vim.opt.laststatus = 2            -- Always show status line.
-vim.opt.lazyredraw = true         -- Don't redraw while executing macros, registers, commands.
-vim.opt.linebreak = true          -- Wrap long lines at a character in 'breakat' rather
+-- vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = 'longest,menuone,preview'
+vim.o.cpoptions:append 'J'      -- Two spaces after a sentence.
+vim.o.encoding = 'utf-8'
+vim.o.expandtab = true          -- Insert spaces instead of real <tab> characters.
+vim.o.fillchars = 'diff:⣿,vert:┃,stl:='
+vim.o.formatoptions = 'qrn1j'
+vim.o.hidden = true             -- Allow modified buffers to be hidden.
+vim.o.history = 1000            -- History of ":" commands.
+vim.o.ignorecase = true         -- Ignore case when searching.
+vim.o.laststatus = 2            -- Always show status line.
+vim.o.lazyredraw = true         -- Don't redraw while executing macros, registers, commands.
+vim.o.linebreak = true          -- Wrap long lines at a character in 'breakat' rather
                                   -- than last char that fits on the screen.
-vim.opt.list = true               -- Show tabs, end-of-line.
+vim.o.list = true               -- Show tabs, end-of-line.
 
 -- Show tabs, end-of-line, line continuation.
-vim.opt.listchars = 'tab:▸\\ ,eol:¬,extends:❯,precedes:❮'
+vim.o.listchars = 'tab:▸\\ ,eol:¬,extends:❯,precedes:❮'
 -- Add < and > to matchpairs for html editing.
-vim.opt.matchpairs = '(:),{:},[:],<:>'
+vim.o.matchpairs = '(:),{:},[:],<:>'
 
-vim.opt.modeline = true           -- Enable vim modeline by default.
-vim.opt.mouse = 'a'               -- Allow mouse use even in a xterm, in tmux.
-vim.opt.equalalways = false       -- Do not keep windows the same height when splitting.
-vim.opt.number = true             -- Show line numbers.
-vim.opt.relativenumber = true     -- Show relative line numbers around current line.
-vim.opt.ruler = true              -- Show line, column numbers, cursor position.
-vim.opt.scrolloff = 0             -- Show NO context above/below cursorline.
-vim.opt.shiftround = true         -- Round indent to multiple of 'shiftwidth'.
-vim.opt.shiftwidth = 4            -- Number of spaces shifted with >> and <<.
-vim.opt.showbreak = '↪'           -- String to put at the start of wrapped lines.
-vim.opt.showcmd = true            -- Show number of selected lines in visual mode.
-vim.opt.sidescroll = 1            -- Scroll horizontally 1 column at a time.
-vim.opt.sidescrolloff = 0         -- Scroll horizontally all the way to the edge.
-vim.opt.smartcase = true          -- Override ignorecase when capitals used in search.
-vim.opt.splitbelow = true         -- Put new window below current one when splitting.
-vim.opt.splitright = true         -- Put new window right of the current one when splitting.
-vim.opt.synmaxcol = 800           -- Don't try to highlight lines longer than 800 characters.
-vim.opt.tabstop = 4               -- Number of spaces for a tab.
-vim.opt.termguicolors = true      -- Use highlight-guifg and highlight-guibg attributes
+vim.o.modeline = true           -- Enable vim modeline by default.
+vim.o.mouse = 'a'               -- Allow mouse use even in a xterm, in tmux.
+vim.o.equalalways = false       -- Do not keep windows the same height when splitting.
+vim.o.number = true             -- Show line numbers.
+vim.o.relativenumber = true     -- Show relative line numbers around current line.
+vim.o.ruler = true              -- Show line, column numbers, cursor position.
+vim.o.scrolloff = 0             -- Show NO context above/below cursorline.
+vim.o.shiftround = true         -- Round indent to multiple of 'shiftwidth'.
+vim.o.shiftwidth = 4            -- Number of spaces shifted with >> and <<.
+vim.o.showbreak = '↪'           -- String to put at the start of wrapped lines.
+vim.o.showcmd = true            -- Show number of selected lines in visual mode.
+vim.o.sidescroll = 1            -- Scroll horizontally 1 column at a time.
+vim.o.sidescrolloff = 0         -- Scroll horizontally all the way to the edge.
+vim.o.smartcase = true          -- Override ignorecase when capitals used in search.
+vim.o.splitbelow = true         -- Put new window below current one when splitting.
+vim.o.splitright = true         -- Put new window right of the current one when splitting.
+vim.o.synmaxcol = 800           -- Don't try to highlight lines longer than 800 characters.
+vim.o.tabstop = 4               -- Number of spaces for a tab.
+vim.o.termguicolors = true      -- Use highlight-guifg and highlight-guibg attributes
                                   -- in the terminal (thus using 24-bit color).
                                   -- NOTE: You should make sure your terminal supports this
---vim.opt.termwinscroll = 50000   -- keep 50k lines in a terminal (default is 10k)
+--vim.o.termwinscroll = 50000   -- keep 50k lines in a terminal (default is 10k)
 
 -- Time out on key codes but not mappings.
 -- Basically this makes terminal Vim work sanely.
---vim.opt.timeout = false         -- Must use timeout=true for 'folke/which-key.nvim' plugin to work.
-vim.opt.ttimeout = true
-vim.opt.ttimeoutlen = 10
+--vim.o.timeout = false         -- Must use timeout=true for 'folke/which-key.nvim' plugin to work.
+vim.o.ttimeout = true
+vim.o.ttimeoutlen = 10
 
 -- Set title to 'titlestring' if terminal supports it.
 -- Note that this doesn't work within tmux.
-vim.opt.title = true
+vim.o.title = true
 
 -- Indicates a fast terminal connection.
 -- Enables extra chars at end of line that wrap, and helps copy/paste with mouse.
-vim.opt.ttyfast = true
+vim.o.ttyfast = true
 
-vim.opt.visualbell = true         -- Use a visual bell instead of beeping.
-vim.opt.wmh = 0                   -- Set the minimum window height to 0.
-vim.opt.wmw = 0                   -- Set the minimum window width to 0.
+vim.o.visualbell = true         -- Use a visual bell instead of beeping.
+vim.o.wmh = 0                   -- Set the minimum window height to 0.
+vim.o.wmw = 0                   -- Set the minimum window width to 0.
 
-vim.opt.ignorecase = true         -- Ignore case when searching.
-vim.opt.smartcase = true          -- Override ignorecase when capitals used in search.
-vim.opt.incsearch = true          -- Show where the pattern matches as it is typed.
-vim.opt.showmatch = true          -- Briefly jump to matching bracket when insert one.
-vim.opt.hlsearch = true           -- Hilight matching search pattern.
---vim.opt.gdefault = false        -- when true the :substitute flag 'g' is on by default, :s///g.
+vim.o.ignorecase = true         -- Ignore case when searching.
+vim.o.smartcase = true          -- Override ignorecase when capitals used in search.
+vim.o.incsearch = true          -- Show where the pattern matches as it is typed.
+vim.o.showmatch = true          -- Briefly jump to matching bracket when insert one.
+vim.o.hlsearch = true           -- Hilight matching search pattern.
+--vim.o.gdefault = false        -- when true the :substitute flag 'g' is on by default, :s///g.
 
-vim.opt.scrolloff = 0             -- Show NO context above/below cursorline.
-vim.opt.sidescroll = 1            -- Scroll horizontally 1 column at a time.
---vim.opt.sidescrolloff = 10      -- Keep 10 chars of context when side scrolling.
-vim.opt.sidescrolloff = 0         -- Scroll horizontally all the way to the edge.
+vim.o.scrolloff = 0             -- Show NO context above/below cursorline.
+vim.o.sidescroll = 1            -- Scroll horizontally 1 column at a time.
+--vim.o.sidescrolloff = 10      -- Keep 10 chars of context when side scrolling.
+vim.o.sidescrolloff = 0         -- Scroll horizontally all the way to the edge.
 
 -- Allow virtual editing in Visual block mode (e.g. allow to go pass end of line).
-vim.opt.virtualedit:append 'block'
+vim.o.virtualedit:append 'block'
 
 -- Cursorline {{{
 -- Only show cursorline in the current window and in normal mode.
-vim.opt.cursorline = true
+vim.o.cursorline = true
 vim.cmd [[
 augroup cline
     au!
@@ -314,8 +314,8 @@ endif
 -- }}}
 
 -- Code folding with treesitter.
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 
 -- }}} [[ Setting more options ]]
 
@@ -656,8 +656,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end
 
----@type vim.Option
-local rtp = vim.opt.rtp
+---@type vim.o.on
+local rtp = vim.o.rtp
 rtp:prepend(lazypath)
 -- }}}
 
