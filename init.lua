@@ -616,6 +616,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- vim-mark {{{
 vim.g.mwDefaultHighlightingPalette = {
+--[[
   { ctermbg = '226', ctermfg = 'black', guibg = '#ffff00', guifg = 'black' },
   { ctermbg = '196', ctermfg = 'black', guibg = '#ff0000', guifg = 'black' },
   { ctermbg =  '21', ctermfg = 'white', guibg = '#0030ff', guifg = 'white' },
@@ -640,6 +641,107 @@ vim.g.mwDefaultHighlightingPalette = {
   { ctermbg = '227', ctermfg = 'black', guibg = '#ffff5f', guifg = 'black' },
   { ctermbg =  '49', ctermfg = 'black', guibg = '#00ffaf', guifg = 'black' },
   { ctermbg = '154', ctermfg = 'black', guibg = '#afff00', guifg = 'black' },
+--]]
+--[[
+  { ctermbg = '196', ctermfg = 'black', guibg = '#FF0000', guifg = 'black' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#00FF00', guifg = 'black' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#0000FF', guifg = 'white' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#FFFF00', guifg = 'black' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#00FFFF', guifg = 'black' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#FF00FF', guifg = 'black' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#FFFFFF', guifg = 'black' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#000000', guifg = 'white' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#008000', guifg = 'white' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#FFA500', guifg = 'black' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#800080', guifg = 'white' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#008080', guifg = 'white' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#FFC0CB', guifg = 'black' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#A52A2A', guifg = 'white' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#000080', guifg = 'white' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#FFDAB9', guifg = 'black' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#7FFF00', guifg = 'black' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#87CEEB', guifg = 'black' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#808000', guifg = 'white' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#DA70D6', guifg = 'black' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#40E0D0', guifg = 'black' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#A0522D', guifg = 'white' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#FFD700', guifg = 'black' },
+  { ctermbg = '  0', ctermfg = 'black', guibg = '#800000', guifg = 'white' },
+--]]
+--[[
+  { ctermbg = '196', ctermfg = 'black', guibg = '#FF0000', guifg = 'black' }, -- Red
+  { ctermbg = '46',  ctermfg = 'black', guibg = '#00FF00', guifg = 'black' }, -- Lime
+  { ctermbg = '21',  ctermfg = 'white', guibg = '#0000FF', guifg = 'white' }, -- Blue
+  { ctermbg = '226', ctermfg = 'black', guibg = '#FFFF00', guifg = 'black' }, -- Yellow
+  { ctermbg = '51',  ctermfg = 'black', guibg = '#00FFFF', guifg = 'black' }, -- Cyan
+  { ctermbg = '201', ctermfg = 'black', guibg = '#FF00FF', guifg = 'black' }, -- Magenta
+  { ctermbg = '15',  ctermfg = 'black', guibg = '#FFFFFF', guifg = 'black' }, -- White
+  { ctermbg = '16',  ctermfg = 'white', guibg = '#000000', guifg = 'white' }, -- Black
+  { ctermbg = '34',  ctermfg = 'white', guibg = '#008000', guifg = 'white' }, -- Green
+  { ctermbg = '208', ctermfg = 'black', guibg = '#FFA500', guifg = 'black' }, -- Orange
+  { ctermbg = '93',  ctermfg = 'white', guibg = '#800080', guifg = 'white' }, -- Purple
+  { ctermbg = '30',  ctermfg = 'white', guibg = '#008080', guifg = 'white' }, -- Teal
+  { ctermbg = '218', ctermfg = 'black', guibg = '#FFC0CB', guifg = 'black' }, -- Pink
+  { ctermbg = '124', ctermfg = 'white', guibg = '#A52A2A', guifg = 'white' }, -- Brown
+  { ctermbg = '19',  ctermfg = 'white', guibg = '#000080', guifg = 'white' }, -- Navy
+  { ctermbg = '225', ctermfg = 'black', guibg = '#E6E6FA', guifg = 'black' }, -- Lavender
+  { ctermbg = '45',  ctermfg = 'black', guibg = '#40E0D0', guifg = 'black' }, -- Turquoise
+  { ctermbg = '88',  ctermfg = 'white', guibg = '#800000', guifg = 'white' }, -- Maroon
+  { ctermbg = '220', ctermfg = 'black', guibg = '#FFD700', guifg = 'black' }, -- Gold
+  { ctermbg = '100', ctermfg = 'white', guibg = '#808000', guifg = 'white' }, -- Olive
+  { ctermbg = '210', ctermfg = 'black', guibg = '#FA8072', guifg = 'black' }, -- Salmon
+  { ctermbg = '117', ctermfg = 'black', guibg = '#87CEEB', guifg = 'black' }, -- Sky Blue
+  { ctermbg = '54',  ctermfg = 'white', guibg = '#4B0082', guifg = 'white' }, -- Indigo
+  { ctermbg = '28',  ctermfg = 'white', guibg = '#228B22', guifg = 'white' }, -- Forest Green
+--]]
+  { ctermbg = '196', ctermfg = 'black', guibg = '#FF0000', guifg = 'black' }, -- Red
+  { ctermbg = '46',  ctermfg = 'black', guibg = '#00FF00', guifg = 'black' }, -- Lime
+  { ctermbg = '21',  ctermfg = 'white', guibg = '#0000FF', guifg = 'white' }, -- Blue
+  { ctermbg = '226', ctermfg = 'black', guibg = '#FFFF00', guifg = 'black' }, -- Yellow
+  { ctermbg = '51',  ctermfg = 'black', guibg = '#00FFFF', guifg = 'black' }, -- Cyan
+  { ctermbg = '201', ctermfg = 'black', guibg = '#FF00FF', guifg = 'black' }, -- Magenta
+  { ctermbg = '208', ctermfg = 'black', guibg = '#FFA500', guifg = 'black' }, -- Orange
+  { ctermbg = '118', ctermfg = 'black', guibg = '#7FFF00', guifg = 'black' }, -- Chartreuse
+  { ctermbg = '45',  ctermfg = 'black', guibg = '#40E0D0', guifg = 'black' }, -- Turquoise
+  { ctermbg = '93',  ctermfg = 'white', guibg = '#800080', guifg = 'white' }, -- Purple
+  { ctermbg = '220', ctermfg = 'black', guibg = '#FFD700', guifg = 'black' }, -- Gold
+  { ctermbg = '210', ctermfg = 'black', guibg = '#FA8072', guifg = 'black' }, -- Salmon
+  { ctermbg = '117', ctermfg = 'black', guibg = '#87CEEB', guifg = 'black' }, -- Sky Blue
+  { ctermbg = '54',  ctermfg = 'white', guibg = '#4B0082', guifg = 'white' }, -- Indigo
+  { ctermbg = '28',  ctermfg = 'white', guibg = '#228B22', guifg = 'white' }, -- Forest Green
+  { ctermbg = '214', ctermfg = 'black', guibg = '#FF7F00', guifg = 'black' }, -- Vivid Orange
+  { ctermbg = '33',  ctermfg = 'white', guibg = '#0066CC', guifg = 'white' }, -- Royal Blue
+  { ctermbg = '82',  ctermfg = 'black', guibg = '#66FF33', guifg = 'black' }, -- Neon Green
+  { ctermbg = '177', ctermfg = 'black', guibg = '#FF66FF', guifg = 'black' }, -- Hot Pink
+  { ctermbg = '47',  ctermfg = 'black', guibg = '#33FFCC', guifg = 'black' }, -- Aqua Green
+  { ctermbg = '172', ctermfg = 'black', guibg = '#FF6600', guifg = 'black' }, -- Bright Orange
+  { ctermbg = '141', ctermfg = 'black', guibg = '#CC66FF', guifg = 'black' }, -- Violet
+  { ctermbg = '75',  ctermfg = 'black', guibg = '#3399FF', guifg = 'black' }, -- Bright Azure
+  { ctermbg = '190', ctermfg = 'black', guibg = '#CCFF00', guifg = 'black' }, -- Acid Green
+  { ctermbg = '203', ctermfg = 'black', guibg = '#FF3333', guifg = 'black' }, -- Bright Red
+  { ctermbg = '99',  ctermfg = 'white', guibg = '#6666CC', guifg = 'white' }, -- Muted Purple
+  { ctermbg = '48',  ctermfg = 'black', guibg = '#33FF99', guifg = 'black' }, -- Mint Green
+  { ctermbg = '227', ctermfg = 'black', guibg = '#FFFF66', guifg = 'black' }, -- Light Yellow
+  { ctermbg = '129', ctermfg = 'white', guibg = '#9933CC', guifg = 'white' }, -- Deep Violet
+  { ctermbg = '38',  ctermfg = 'black', guibg = '#339999', guifg = 'black' }, -- Teal Blue
+  { ctermbg = '219', ctermfg = 'black', guibg = '#FF99CC', guifg = 'black' }, -- Light Pink
+  { ctermbg = '202', ctermfg = 'black', guibg = '#FF4500', guifg = 'black' }, -- Orange Red
+  { ctermbg = '79',  ctermfg = 'black', guibg = '#66FFCC', guifg = 'black' }, -- Aqua Mint
+  { ctermbg = '153', ctermfg = 'black', guibg = '#9999FF', guifg = 'black' }, -- Soft Blue
+  { ctermbg = '112', ctermfg = 'black', guibg = '#66CC66', guifg = 'black' }, -- Medium Green
+  { ctermbg = '229', ctermfg = 'black', guibg = '#FFFF99', guifg = 'black' }, -- Pastel Yellow
+  { ctermbg = '183', ctermfg = 'black', guibg = '#FF99FF', guifg = 'black' }, -- Candy Pink
+  { ctermbg = '159', ctermfg = 'black', guibg = '#99FFFF', guifg = 'black' }, -- Pastel Cyan
+  { ctermbg = '171', ctermfg = 'black', guibg = '#FF66CC', guifg = 'black' }, -- Neon Pink
+  { ctermbg = '121', ctermfg = 'black', guibg = '#66FF66', guifg = 'black' }, -- Bright Green
+  { ctermbg = '105', ctermfg = 'white', guibg = '#6666FF', guifg = 'white' }, -- Strong Blue
+  { ctermbg = '215', ctermfg = 'black', guibg = '#FF9966', guifg = 'black' }, -- Peach Orange
+  { ctermbg = '84',  ctermfg = 'black', guibg = '#66FF99', guifg = 'black' }, -- Soft Mint
+  { ctermbg = '225', ctermfg = 'black', guibg = '#E6E6FA', guifg = 'black' }, -- Lavender
+  { ctermbg = '195', ctermfg = 'black', guibg = '#CCFFFF', guifg = 'black' }, -- Baby Blue
+  { ctermbg = '140', ctermfg = 'black', guibg = '#CC66CC', guifg = 'black' }, -- Purple Rose
+  { ctermbg = '186', ctermfg = 'black', guibg = '#FFFFCC', guifg = 'black' }, -- Cream Yellow
+  { ctermbg = '81',  ctermfg = 'black', guibg = '#66CCFF', guifg = 'black' }, -- Clear Sky
 }
 -- turn off the creation of the default mappings.
 vim.g.mw_no_mappings = 1
