@@ -1909,6 +1909,8 @@ end
 -- Highlights
 -- ============================================================
 vim.cmd [[
+" I don't like tokyonight-night's greyish-blue background
+hi Normal guibg=#000000
 "hi Folded ctermbg=16 ctermfg=37 guifg=#709090 guibg=#001717
 "hi Folded ctermbg=16 ctermfg=37 guifg=#70c0c0 guibg=#000035
 hi Folded ctermbg=16 ctermfg=37 guifg=#70c0c0 guibg=#002000
