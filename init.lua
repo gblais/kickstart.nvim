@@ -159,32 +159,36 @@ do
   --vim.o.listchars = 'tab:▸\\ ,eol:¬,extends:❯,precedes:❮'
   vim.opt.listchars = { tab = '▸ ', trail = '⌴', nbsp = '␣', eol = '¬', extends = '❯', precedes = '❮' }
 
-  -- Trailing whitespace {{{
+  -- -----------------------------------------------------------
+  -- Trailing whitespace
+  -- -----------------------------------------------------------
   -- Only shown when not in insert mode so I don't go insane.
   vim.cmd [[
   augroup trailing
-      au!
-      au InsertEnter * :set listchars-=trail:⌴
-      au InsertLeave * :set listchars+=trail:⌴
+    au!
+    au InsertEnter * :set listchars-=trail:⌴
+    au InsertLeave * :set listchars+=trail:⌴
   augroup END
   ]]
-  -- }}}
+  -- -----------------------------------------------------------
 
   -- Preview substitutions live, as you type!
   vim.o.inccommand = 'split'
 
-  -- Cursorline {{{
+  -- -----------------------------------------------------------
+  -- Cursorline
+  -- -----------------------------------------------------------
   -- Show which line your cursor is on
   vim.o.cursorline = true
   -- Only show cursorline in the current window and in normal mode.
   vim.cmd [[
   augroup cline
-      au!
-      au WinLeave,InsertEnter * set nocursorline
-      au WinEnter,InsertLeave * set cursorline
+    au!
+    au WinLeave,InsertEnter * set nocursorline
+    au WinEnter,InsertLeave * set cursorline
   augroup END
   ]]
-  -- }}}
+  -- -----------------------------------------------------------
 
   -- Minimal number of screen lines to keep above and below the cursor.
   --vim.o.scrolloff = 10
@@ -199,7 +203,9 @@ do
   -- See `:help 'confirm'`
   vim.o.confirm = true
 
-  -- [[ Setting more options ]] {{{
+  -- -----------------------------------------------------------
+  -- [[ Setting more options ]]
+  -- -----------------------------------------------------------
   vim.o.autoindent = true              -- Copy indent from current line when starting a new line.
   vim.o.belloff = 'all'                -- Turn off bell for everything.
   vim.o.colorcolumn = '+1'             -- Highlight column at textwidth.
@@ -261,7 +267,9 @@ do
   -- Allow virtual editing in Visual block mode (e.g. allow to go pass end of line).
   vim.opt.virtualedit:append 'block'
 
-  -- Line Return {{{
+  -- -----------------------------------------------------------
+  -- Line Return
+  -- -----------------------------------------------------------
   -- Make sure Vim returns to the same line when you reopen a file.
   vim.cmd [[
   augroup line_return
@@ -272,9 +280,11 @@ do
           \\ endif
   augroup END
   ]]
-  -- }}}
+  -- -----------------------------------------------------------
 
-  -- Backups {{{
+  -- -----------------------------------------------------------
+  -- Backups
+  -- -----------------------------------------------------------
   vim.cmd [[
   set backup                        " enable backups
   "set noswapfile                  " it's 2013, Vim.
@@ -294,9 +304,8 @@ do
       call mkdir(expand(&directory), --p--)
   endif
   ]]
-  -- }}}
+  -- -----------------------------------------------------------
 
-  -- }}} [[ Setting more options ]]
 end
 
 -- ============================================================
@@ -370,19 +379,9 @@ do
   -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
   -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
-  -- hold down Ctrl and move between windows with the standard Vim movement keys.
-  --vim.keymap.set('n', '<c-j>', '<c-w>j')
-  --vim.keymap.set('n', '<c-k>', '<c-w>k')
-  --vim.keymap.set('n', '<c-h>', '<c-w>h')
-  --vim.keymap.set('n', '<c-l>', '<c-w>l')
-
-  -- Also set to use Alt with the arrows to move around windows
-  --vim.keymap.set('n', '<silent>', '<A-Up>    :wincmd k<CR>')
-  --vim.keymap.set('n', '<silent>', '<A-Down>  :wincmd j<CR>')
-  --vim.keymap.set('n', '<silent>', '<A-Left>  :wincmd h<CR>')
-  --vim.keymap.set('n', '<silent>', '<A-Right> :wincmd l<CR>')
-
-  -- [[ Other Mappings ]] {{{
+  -- -----------------------------------------------------------
+  -- [[ Other Mappings ]]
+  -- -----------------------------------------------------------
   --vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
   -- Remap for dealing with word wrap
@@ -527,21 +526,6 @@ do
   -- |protocol message'ctrl-'>               |
   -- will result in
   -- |-protocol message--------------------->|
-  --inoremap <c-->> <esc>ldwF\|pT\|r-ldwf\|Pr>bf vt>r-F\|jlR
-  --inoremap <c-->< <esc>ldwF\|pwhvT\|r-r<lxf\|PF<jR
-  --inoremap <c-->> <esc>lxvt\|r-t\|r>F\|a-<esc>jR
-  --inoremap <c-->< <esc>ldt\|F\|pxhvT\|r-r<f\|i-<esc>T\|jR
-  --inoremap <c-->> <Esc>ldwF\|pT\|r-ldwf\|Pr>bf vt>r-
-  --inoremap <c-->< <Esc>ldwF\|pwhvT\|r-r<lxf\|P
-  -- Windows Terminal uses ctrl- and ctrl+ to control the font size.
-  -- So use ctrl_ instead for the call-flow maps.
-  --vim.keymap.set('i', '<c-_>>', '<Esc>ldwF|pT|r-ldwf|Pr>bf vt>r-')
-  --vim.keymap.set('i', '<c-_><', '<Esc>ldwF|pwhvT|r-r<lxf|P')
-  --vim.keymap.set('i', '<right>', '<Esc>ldwF|pT|r-ldwf|Pr>bf vt>r-')
-  --vim.keymap.set('i', '<left>', '<Esc>ldwF|pwhvT|r-r<lxf|P')
-  -- This doesn't work:
-  --vim.keymap.set('i', '<c->>>', '<Esc>ldwF|pT|r-ldwf|Pr>bf vt>r-')
-  --vim.keymap.set('i', '<c-<><', '<Esc>ldwF|pwhvT|r-r<lxf|P')
   vim.keymap.set('i', '<c-l><c-l>', '<Esc>ldwF|pT|r-ldwf|Pr>bf vt>r-T|jR')
   vim.keymap.set('i', '<c-h><c-h>', '<Esc>ldwF|pwhvT|r-r<lxf|PT|jR')
 
@@ -549,23 +533,13 @@ do
   -- will result in
   -- |           protocol message            |
   -- |-------------------------------------->|
-  --inoremap <c-->) <esc>F\|maldt\|O<esc>P:s/\(.*\S\)\(\s*\)$/\2\1<cr>:s/\(\s*\)\(\1\)/\1;\2<cr>:s/;\(\s*\)\(.*\)/\2\1<cr>0d$`apT\|jvt\|r-t\|r>kkdd`ajjlR
-  --inoremap <c-->( <esc>F\|maldt\|O<esc>P:s/\(.*\S\)\(\s*\)$/\2\1<cr>:s/\(\s*\)\(\1\)/\1;\2<cr>:s/;\(\s*\)\(.*\)/\2\1<cr>0d$`apT\|jvt\|r-r<kkdd`ajjlR
-  -- Windows Terminal uses ctrl- and ctrl+ to control the font size.
-  -- So use ctrl_ instead for the call-flow maps.
-  --vim.keymap.set('i', '<c-_>)', '<esc>F|maldt|O<esc>P:s/\\(.*\\S\\)\\(\\s*\\)$/\\2\\1<cr>:s/\\(\\s*\\)\\(\\1\\)/\\1;\\2<cr>:s/;\\(\\s*\\)\\(.*\\)/\\2\\1<cr>0d$`apT|jvt|r-t|r>kkdd`ajjlR')
-  --vim.keymap.set('i', '<c-_>(', '<esc>F|maldt|O<esc>P:s/\\(.*\\S\\)\\(\\s*\\)$/\\2\\1<cr>:s/\\(\\s*\\)\\(\\1\\)/\\1;\\2<cr>:s/;\\(\\s*\\)\\(.*\\)/\\2\\1<cr>0d$`apT|jvt|r-r<kkdd`ajjlR')
   vim.keymap.set('i', '<c-L>l', '<esc>F|maldt|O<esc>P:s/\\(.*\\S\\)\\(\\s*\\)$/\\2\\1<cr>:s/\\(\\s*\\)\\(\\1\\)/\\1;\\2<cr>:s/;\\(\\s*\\)\\(.*\\)/\\2\\1<cr>0d$`apT|jvt|r-t|r>kkdd`ajjlR')
   vim.keymap.set('i', '<c-H>h', '<esc>F|maldt|O<esc>P:s/\\(.*\\S\\)\\(\\s*\\)$/\\2\\1<cr>:s/\\(\\s*\\)\\(\\1\\)/\\1;\\2<cr>:s/;\\(\\s*\\)\\(.*\\)/\\2\\1<cr>0d$`apT|jvt|r-r<kkdd`ajjlR')
 
-  -- Navigate betweenn protocol sections.
+  -- Navigate between protocol sections.
   -- |█<right>          |                    |
   -- will result in cursor moving to next section.
   -- |                  |█                   |
-  --vim.keymap.set('i', '<c-right>', '<esc>f|lR')
-  --vim.keymap.set('i', '<c-left>', ' <esc>F|lR')
-  --vim.keymap.set('i', '<c-right>', '<esc>f|lR')
-  --vim.keymap.set('i', '<c-left>', ' <esc>F|hT|R')
   vim.keymap.set('i', '<c-right>', '<c-o>f|<c-o>l')
   vim.keymap.set('i', '<c-left>', '<c-o>F|<c-o>T|')
 
@@ -594,9 +568,9 @@ do
   vim.keymap.set('c', '<c-a>', '<home>')
   vim.keymap.set('c', '<c-e>', '<end>')
 
-  -- }}} [[ Other Mappings ]]
-
-  -- [[ Basic Autocommands ]] {{{
+  -- -----------------------------------------------------------
+  -- [[ Basic Autocommands ]]
+  -- -----------------------------------------------------------
   --  See `:help lua-guide-autocommands`
 
   -- Highlight when yanking (copying) text
@@ -608,88 +582,11 @@ do
     callback = function() vim.hl.on_yank() end,
     --callback = function() vim.hl.hl_op() end,
   })
-  -- }}} [[ Basic Autocommands ]]
 
-  -- vim-mark {{{
+  -- -----------------------------------------------------------
+  -- vim-mark
+  -- -----------------------------------------------------------
   vim.g.mwDefaultHighlightingPalette = {
-  --[[
-    { ctermbg = '226', ctermfg = 'black', guibg = '#ffff00', guifg = 'black' },
-    { ctermbg = '196', ctermfg = 'black', guibg = '#ff0000', guifg = 'black' },
-    { ctermbg =  '21', ctermfg = 'white', guibg = '#0030ff', guifg = 'white' },
-    { ctermbg =  '46', ctermfg = 'black', guibg = '#00ff00', guifg = 'black' },
-    { ctermbg = '201', ctermfg = 'black', guibg = '#ff00ff', guifg = 'black' },
-    { ctermbg =  '51', ctermfg = 'black', guibg = '#00ffff', guifg = 'black' },
-    { ctermbg =  '88', ctermfg = 'white', guibg = '#870000', guifg = 'white' },
-    { ctermbg = '208', ctermfg = 'black', guibg = '#ff8700', guifg = 'black' },
-    { ctermbg =  '18', ctermfg = 'white', guibg = '#003087', guifg = 'white' },
-    { ctermbg =  '22', ctermfg = 'white', guibg = '#005f00', guifg = 'white' },
-    { ctermbg =  '90', ctermfg = 'white', guibg = '#870087', guifg = 'white' },
-    { ctermbg =  '36', ctermfg = 'black', guibg = '#00af87', guifg = 'black' },
-    { ctermbg = '239', ctermfg = 'white', guibg = '#4e4e4e', guifg = 'white' },
-    { ctermbg = '202', ctermfg = 'black', guibg = '#ff5f00', guifg = 'black' },
-    { ctermbg = '131', ctermfg = 'black', guibg = '#af5f5f', guifg = 'black' },
-    { ctermbg = '113', ctermfg = 'black', guibg = '#87d75f', guifg = 'black' },
-    { ctermbg =  '71', ctermfg = 'white', guibg = '#5faf5f', guifg = 'white' },
-    { ctermbg = '192', ctermfg = 'black', guibg = '#d7ff87', guifg = 'black' },
-    { ctermbg =  '99', ctermfg = 'white', guibg = '#875fff', guifg = 'white' },
-    { ctermbg = '168', ctermfg = 'white', guibg = '#d75f87', guifg = 'white' },
-    { ctermbg = '231', ctermfg = 'black', guibg = '#ffffff', guifg = 'black' },
-    { ctermbg = '227', ctermfg = 'black', guibg = '#ffff5f', guifg = 'black' },
-    { ctermbg =  '49', ctermfg = 'black', guibg = '#00ffaf', guifg = 'black' },
-    { ctermbg = '154', ctermfg = 'black', guibg = '#afff00', guifg = 'black' },
-  --]]
-  --[[
-    { ctermbg = '196', ctermfg = 'black', guibg = '#FF0000', guifg = 'black' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#00FF00', guifg = 'black' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#0000FF', guifg = 'white' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#FFFF00', guifg = 'black' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#00FFFF', guifg = 'black' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#FF00FF', guifg = 'black' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#FFFFFF', guifg = 'black' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#000000', guifg = 'white' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#008000', guifg = 'white' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#FFA500', guifg = 'black' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#800080', guifg = 'white' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#008080', guifg = 'white' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#FFC0CB', guifg = 'black' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#A52A2A', guifg = 'white' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#000080', guifg = 'white' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#FFDAB9', guifg = 'black' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#7FFF00', guifg = 'black' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#87CEEB', guifg = 'black' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#808000', guifg = 'white' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#DA70D6', guifg = 'black' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#40E0D0', guifg = 'black' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#A0522D', guifg = 'white' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#FFD700', guifg = 'black' },
-    { ctermbg = '  0', ctermfg = 'black', guibg = '#800000', guifg = 'white' },
-  --]]
-  --[[
-    { ctermbg = '196', ctermfg = 'black', guibg = '#FF0000', guifg = 'black' }, -- Red
-    { ctermbg = '46',  ctermfg = 'black', guibg = '#00FF00', guifg = 'black' }, -- Lime
-    { ctermbg = '21',  ctermfg = 'white', guibg = '#0000FF', guifg = 'white' }, -- Blue
-    { ctermbg = '226', ctermfg = 'black', guibg = '#FFFF00', guifg = 'black' }, -- Yellow
-    { ctermbg = '51',  ctermfg = 'black', guibg = '#00FFFF', guifg = 'black' }, -- Cyan
-    { ctermbg = '201', ctermfg = 'black', guibg = '#FF00FF', guifg = 'black' }, -- Magenta
-    { ctermbg = '15',  ctermfg = 'black', guibg = '#FFFFFF', guifg = 'black' }, -- White
-    { ctermbg = '16',  ctermfg = 'white', guibg = '#000000', guifg = 'white' }, -- Black
-    { ctermbg = '34',  ctermfg = 'white', guibg = '#008000', guifg = 'white' }, -- Green
-    { ctermbg = '208', ctermfg = 'black', guibg = '#FFA500', guifg = 'black' }, -- Orange
-    { ctermbg = '93',  ctermfg = 'white', guibg = '#800080', guifg = 'white' }, -- Purple
-    { ctermbg = '30',  ctermfg = 'white', guibg = '#008080', guifg = 'white' }, -- Teal
-    { ctermbg = '218', ctermfg = 'black', guibg = '#FFC0CB', guifg = 'black' }, -- Pink
-    { ctermbg = '124', ctermfg = 'white', guibg = '#A52A2A', guifg = 'white' }, -- Brown
-    { ctermbg = '19',  ctermfg = 'white', guibg = '#000080', guifg = 'white' }, -- Navy
-    { ctermbg = '225', ctermfg = 'black', guibg = '#E6E6FA', guifg = 'black' }, -- Lavender
-    { ctermbg = '45',  ctermfg = 'black', guibg = '#40E0D0', guifg = 'black' }, -- Turquoise
-    { ctermbg = '88',  ctermfg = 'white', guibg = '#800000', guifg = 'white' }, -- Maroon
-    { ctermbg = '220', ctermfg = 'black', guibg = '#FFD700', guifg = 'black' }, -- Gold
-    { ctermbg = '100', ctermfg = 'white', guibg = '#808000', guifg = 'white' }, -- Olive
-    { ctermbg = '210', ctermfg = 'black', guibg = '#FA8072', guifg = 'black' }, -- Salmon
-    { ctermbg = '117', ctermfg = 'black', guibg = '#87CEEB', guifg = 'black' }, -- Sky Blue
-    { ctermbg = '54',  ctermfg = 'white', guibg = '#4B0082', guifg = 'white' }, -- Indigo
-    { ctermbg = '28',  ctermfg = 'white', guibg = '#228B22', guifg = 'white' }, -- Forest Green
-  --]]
     { ctermbg = '196', ctermfg = 'black', guibg = '#FF0000', guifg = 'black' }, -- Red
     { ctermbg = '46',  ctermfg = 'black', guibg = '#00FF00', guifg = 'black' }, -- Lime
     { ctermbg = '21',  ctermfg = 'white', guibg = '#0000FF', guifg = 'white' }, -- Blue
@@ -741,7 +638,8 @@ do
   }
   -- turn off the creation of the default mappings.
   vim.g.mw_no_mappings = 1
-  -- }}} vim-mark
+  -- -----------------------------------------------------------
+
 end
 
 -- ============================================================
@@ -964,9 +862,12 @@ do
   -- - sr)'  - [S]urround [R]eplace [)] [']
   require('mini.surround').setup()
 
-  -- Comment out mini status line, since we are using lualine instead.
+  -- NOTE: Comment out mini status line, since we are using lualine instead.
   --[[
+
+  -- -----------------------------------------------------------
   -- Simple and easy statusline.
+  -- -----------------------------------------------------------
   --  You could remove this setup call if you don't like it,
   --  and try some other statusline plugin
   local statusline = require 'mini.statusline'
@@ -980,7 +881,9 @@ do
   statusline.section_location = function() return '%2l:%-2v' end
   --]]
 
+  -- -----------------------------------------------------------
   -- Set lualine as statusline
+  -- -----------------------------------------------------------
   vim.pack.add { gh 'nvim-lualine/lualine.nvim' }
 
   -- Function to display the current state of Copilot in the status line.
@@ -1123,6 +1026,7 @@ do
     --extensions = {},
     extensions = { 'fugitive' }, -- 🛠️ Clean statusline for your new Fugitive buffers
   }
+  -- -----------------------------------------------------------
 
   -- ... and there is more!
   --  Check out: https://github.com/nvim-mini/mini.nvim
@@ -1672,9 +1576,9 @@ do
   -- require 'custom.plugins.ui'
   -- require 'custom.plugins.git'
 
-  -------------------------------------------
+  -- -----------------------------------------------------------
   -- Git plugin from Tim Pope
-  -------------------------------------------
+  -- -----------------------------------------------------------
   vim.pack.add { gh 'tpope/vim-fugitive' }
   -- Some useful keymaps for vim-fugitive (Repository Control)
   vim.keymap.set('n', '<leader>gs', vim.cmd.Git, { desc = 'Git status panel' })
@@ -1682,39 +1586,58 @@ do
   vim.keymap.set('n', '<leader>gp', ':Git push<CR>', { desc = 'Git push' })
   vim.keymap.set('n', '<leader>gl', ':Git log --oneline<CR>', { desc = 'Git log summary' })
 
-  -------------------------------------------
+  -- -----------------------------------------------------------
   -- Show a lightbulb icon next to a quickfix suggestion by lsp.
-  -------------------------------------------
+  -- -----------------------------------------------------------
   vim.pack.add { gh 'kosayoda/nvim-lightbulb' }
   require('nvim-lightbulb').setup {
     autocmd = { enabled = true },
   }
 
-  -------------------------------------------
+  -- -----------------------------------------------------------
   -- Add indentation guides even on blank lines
-  -------------------------------------------
+  -- -----------------------------------------------------------
+  -- 1. Register the plugin with Neovim's native package manager
   vim.pack.add { gh 'lukas-reineke/indent-blankline.nvim' }
+
+  -- 2. Define a custom pale color for your lines.
+  -- Linking to 'LineNr' forces it to use your theme's quietest text color (like line numbers).
+  --vim.api.nvim_set_hl(0, 'IblSubtleIndent', { link = 'LineNr', nocombine = true })
+  -- OR Define your exact pale color using your preferred hex code
+  -- This targets ONLY the indent lines, leaving your actual line numbers readable.
+  vim.api.nvim_set_hl(0, 'IblSubtleIndent', { fg = '#0b1231', nocombine = true })
+
+  -- 3. Configure and initialize the plugin using the native 'ibl' module
   require('ibl').setup {
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help ibl`
-    -- indent = { char = '▏' },
-    -- indent = { char = '┆' },
-    -- indent = { char = '│' }, -- box drawings light vertical
-    -- indent = { char = '⸾' }, -- wiggly vertical line
-    -- indent = { char = '⁞' }, -- vertical four dots
-    -- indent = { char = '⸽' }, -- vertical six dots
-    -- indent = { char = '⎸' }, -- left vertical box line
-    -- indent = { char = '⎹' }, -- right vertical box line
-    -- indent = { char = '|' }, -- vertical line
-    -- indent = { char = '┊' }, -- box drawings light quadruple dash vertical
-    -- indent = { char = '⋮' }, -- vertical ellipsis
-    indent = { char = '╎' }, -- box drawings light double dash vertical
-    -- indent = { char = '￨' }, -- halfwidth forms light vertical
+    indent = {
+      -- '│' is a thin standard box character that spans the full line height
+      -- Other options for the character used to draw the indent guides:
+      -- '▏'
+      -- '┆'
+      -- '│' -- box drawings light vertical
+      -- '⸾' -- wiggly vertical line
+      -- '⁞' -- vertical four dots
+      -- '⸽' -- vertical six dots
+      -- '⎸' -- left vertical box line
+      -- '⎹' -- right vertical box line
+      -- '|' -- vertical line
+      -- '┊' -- box drawings light quadruple dash vertical
+      -- '⋮' -- vertical ellipsis
+      -- '╎' -- box drawings light double dash vertical
+      -- '￨' -- halfwidth forms light vertical
+      char = '│',
+      tab_char = '│',
+      highlight = { 'IblSubtleIndent' },
+    },
+    scope = {
+      -- Disable active scope highlighting to keep ALL lines identically pale
+      enabled = false,
+    },
   }
 
-  -------------------------------------------
+  -- -----------------------------------------------------------
   -- Hilight text in different colors.
-  -------------------------------------------
+  -- -----------------------------------------------------------
   vim.pack.add { gh 'inkarkat/vim-ingo-library' } -- needed by vim-mark
   vim.pack.add { gh 'inkarkat/vim-mark' }
   --  config = function()
@@ -1764,24 +1687,24 @@ do
   --vim.pack.add { gh 'ap/vim-css-color' }
   --require(vim-css-color').setup {}
 
-  -------------------------------------------
+  -- -----------------------------------------------------------
   -- DirDiff
-  -------------------------------------------
+  -- -----------------------------------------------------------
   vim.pack.add { gh 'will133/vim-dirdiff' }
 
-  -------------------------------------------
+  -- -----------------------------------------------------------
   -- Vim sessions
-  -------------------------------------------
+  -- -----------------------------------------------------------
   vim.pack.add { gh 'tpope/vim-obsession' }
 
-  -------------------------------------------
+  -- -----------------------------------------------------------
   -- undotree
-  -------------------------------------------
+  -- -----------------------------------------------------------
   vim.pack.add { gh 'mbbill/undotree' }
 
-  -------------------------------------------
+  -- -----------------------------------------------------------
   -- nvim-tree
-  -------------------------------------------
+  -- -----------------------------------------------------------
   vim.pack.add { gh 'nvim-tree/nvim-web-devicons' } -- needed by nvim-tree
   vim.pack.add { gh 'nvim-tree/nvim-tree.lua' }
   -- disable netrw at the very start of your init.lua
@@ -1793,7 +1716,7 @@ do
       return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
     end
     -- default mappings
-    api.config.mappings.default_on_attach(bufnr)
+    api.map.on_attach.default(bufnr)
     -- custom mappings
     vim.keymap.set('n', '<c-u>', api.tree.change_root_to_parent, opts 'Up')
     vim.keymap.set('n', '?', api.tree.toggle_help, opts 'Help')
@@ -1813,16 +1736,16 @@ do
     on_attach = nvimtree_on_attach,
     update_focused_file = {
       enable = true,
-      update_root = false,
+      update_root = { enable = false },
     },
   }
   local api = require 'nvim-tree.api'
   vim.keymap.set('n', '<leader>tt', api.tree.toggle, { desc = 'Toggle nvimtree' })
   vim.keymap.set('n', '<leader>tf', api.tree.focus, { desc = 'Focus nvimtree' })
 
-  -------------------------------------------
+  -- -----------------------------------------------------------
   -- Copilot
-  -------------------------------------------
+  -- -----------------------------------------------------------
   -- 1. Load the Core Copilot Engine (Requires authenticating via :Copilot setup)
   vim.pack.add { gh 'github/copilot.vim' }
   -- 2. Load CopilotChat
@@ -1832,6 +1755,7 @@ do
   -- 3. Configure CopilotChat (Strictly settings inside .setup)
   require('CopilotChat').setup {
     -- model = 'gpt-4o', -- Sets your default baseline model
+    --[[
     mappings = {
       submit_prompt = {
         normal = '<Leader>s',
@@ -1845,6 +1769,7 @@ do
         insert = '<Right>',
       },
     },
+    --]]
   }
   -- 4. Explicitly bind ALL Keymaps using standard Neovim API
   -- Toggle Main Chat
@@ -1877,7 +1802,7 @@ do
   vim.keymap.set('n', '<leader>ccq', function()
     local input = vim.fn.input("Copilot Quick Chat: ")
     if input ~= "" then
-      require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+      require("CopilotChat").ask("#selection " .. input)
     end
   end, { desc = "CopilotChat - Quick chat buffer" })
 
@@ -1897,9 +1822,9 @@ do
   vim.keymap.set('n', '<leader>ce', '<cmd>Copilot enable<CR>', { desc = 'Copilot - Force enable for buffer' })
   vim.keymap.set('n', '<leader>cd', '<cmd>Copilot disable<CR>', { desc = 'Copilot - Force disable for buffer' })
 
-  -------------------------------------------
+  -- -----------------------------------------------------------
   -- Display ANSI escape sequences as colors.
-  -------------------------------------------
+  -- -----------------------------------------------------------
   -- NOTE: Disable for now, because it seems to conflict with vim-mark.
   --vim.pack.add { gh 'powerman/vim-plugin-AnsiEsc' }
   --require('vim-plugin-AnsiEsc').setup {}
