@@ -1434,6 +1434,7 @@ do
 
   -- [[ Autocomplete Engine ]]
   vim.pack.add { { src = gh 'saghen/blink.cmp', version = vim.version.range '1.*' } }
+  vim.pack.add { gh 'giuxtaposition/blink-cmp-copilot' } -- 🔌 The Blink drop-down adapter for GitHub Copilot
   require('blink.cmp').setup {
     keymap = {
       -- 'default' (recommended) for mappings similar to built-in completions
@@ -1477,7 +1478,18 @@ do
     },
 
     sources = {
-      default = { 'lsp', 'path', 'snippets' },
+      -- 1. Add 'copilot' to your default pool of active autocomplete providers
+      default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+      -- 2. Define the provider module connection
+      providers = {
+        copilot = {
+          name = 'copilot',
+          --module = 'blink-cmp-copilot',
+          module = 'blink-cmp-copilot',
+          score_offset = 100, -- 📈 Gives Copilot higher ranking sorting positions in your dropdown
+          async = true,
+        },
+      },
     },
 
     snippets = { preset = 'luasnip' },
@@ -1769,11 +1781,14 @@ do
   -- 1. Package Installation
   -- ====================================================================
   vim.pack.add { gh 'zbirenbaum/copilot.lua' }
+  --vim.pack.add { gh 'zbirenbaum/copilot-cmp' } -- 🔌 The dropdown bridge plugin
+  --vim.pack.add { gh 'giuxtaposition/blink-cmp-copilot' } -- 🔌 The Blink drop-down adapter
   vim.pack.add { gh 'CopilotC-Nvim/CopilotChat.nvim' }
 
   -- ====================================================================
   -- 2. Configuration for Core copilot.lua
   -- ====================================================================
+  --[[
   require('copilot').setup({
     panel = { enabled = false }, -- Disables the secondary split panel
     suggestion = {
@@ -1796,6 +1811,23 @@ do
       ["."] = false,           -- Disable for unknown filetypes
     },
   })
+  --]]
+
+  require('copilot').setup({
+    -- ⚠️ CRITICAL: Disable inline ghost text so it doesn't fight the dropdown menu
+    suggestion = { enabled = false },
+    panel = { enabled = false },
+    filetypes = {
+      markdown = false,
+      text = false,
+      gitcommit = false,
+      yaml = false,
+      ["."] = false,
+    },
+  })
+
+  -- Initialize the bridge plugin
+  --require('copilot_cmp').setup {}
 
   -- ====================================================================
   -- 3. On-the-Fly Toggle Keymaps
