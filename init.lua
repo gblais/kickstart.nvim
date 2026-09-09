@@ -1434,7 +1434,7 @@ do
 
   -- [[ Autocomplete Engine ]]
   vim.pack.add { { src = gh 'saghen/blink.cmp', version = vim.version.range '1.*' } }
-  vim.pack.add { gh 'giuxtaposition/blink-cmp-copilot' } -- 🔌 The Blink drop-down adapter for GitHub Copilot
+  --vim.pack.add { gh 'giuxtaposition/blink-cmp-copilot' } -- 🔌 The Blink drop-down adapter for GitHub Copilot
   require('blink.cmp').setup {
     keymap = {
       -- 'default' (recommended) for mappings similar to built-in completions
@@ -1478,6 +1478,8 @@ do
     },
 
     sources = {
+      default = { 'lsp', 'path', 'snippets' },
+      --[[
       -- 1. Add 'copilot' to your default pool of active autocomplete providers
       default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
       -- 2. Define the provider module connection
@@ -1490,6 +1492,7 @@ do
           async = true,
         },
       },
+      --]]
     },
 
     snippets = { preset = 'luasnip' },
@@ -1788,15 +1791,17 @@ do
   -- ====================================================================
   -- 2. Configuration for Core copilot.lua
   -- ====================================================================
-  --[[
   require('copilot').setup({
-    panel = { enabled = false }, -- Disables the secondary split panel
+    panel = { enabled = false },
     suggestion = {
       enabled = true,
-      auto_trigger = true, -- Automatically shows suggestions as you type
+      auto_trigger = true,
       debounce = 75,
       keymap = {
-        accept = "<C-y>",      -- Accept suggestion
+        -- 🛠️ Change accept to a custom function handled below instead of a hardcoded string
+        --accept = "<C-y>",      -- Accept suggestion
+        --accept = "<Tab>",      -- Accept suggestion
+        accept = false,
         next = "<M-]>",        -- Next suggestion (Alt + ])
         prev = "<M-[>",        -- Previous suggestion (Alt + [)
         dismiss = "<C-e>",     -- Dismiss suggestion
@@ -1811,8 +1816,22 @@ do
       ["."] = false,           -- Disable for unknown filetypes
     },
   })
-  --]]
 
+  -- 🛠️ Smart Tab Keymap: Accept copilot first. If no suggestion, fall back to moving through snippets.
+  vim.keymap.set('i', '<Tab>', function()
+    if require('copilot.suggestion').is_visible() then
+      require('copilot.suggestion').accept()
+    else
+      -- Fallback: Check if LuaSnip can jump forward, otherwise type a literal Tab
+      if require('luasnip').jumpable(1) then
+        require('luasnip').jump(1)
+      else
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, false, true), 'n', false)
+      end
+    end
+  end, { desc = 'Copilot/Luasnip - Smart Tab' })
+
+  --[[
   require('copilot').setup({
     -- ⚠️ CRITICAL: Disable inline ghost text so it doesn't fight the dropdown menu
     suggestion = { enabled = false },
@@ -1825,6 +1844,7 @@ do
       ["."] = false,
     },
   })
+  --]]
 
   -- Initialize the bridge plugin
   --require('copilot_cmp').setup {}
