@@ -925,7 +925,7 @@ do
   end
 
   -- 1. Dynamic Icon Function
-  local function copilot_status_icon()
+  local function copilot_status_icon_Previous1()
     local state = get_copilot_state()
     if state == 'loading' then
       return ' ' -- Loading/Spinning icon
@@ -939,7 +939,7 @@ do
   end
 
   -- 2. Dynamic Color Function
-  local function copilot_status_color()
+  local function copilot_status_color_Previous1()
     local state = get_copilot_state()
     if state == 'loading' then
       return { fg = '#ffb86c', gui = 'bold' } -- Dracula Orange (Loading)
@@ -948,6 +948,25 @@ do
     else
       return { fg = '#6272a4' }               -- Dracula Comment Grey (Disabled)
     end
+  end
+
+  -- Simple check to see if copilot client is currently running in the active buffer
+  -- 1. Dynamic Icon Function
+  local function copilot_status_icon()
+    local client = vim.lsp.get_clients({ name = 'copilot' })[1]
+    if not client then
+      return ' ' -- Disabled / Not running icon
+    end
+    return ' '   -- Active icon
+  end
+
+  -- 2. Dynamic Color Function
+  local function copilot_status_color()
+    local client = vim.lsp.get_clients({ name = 'copilot' })[1]
+    if not client then
+      return { fg = '#6272a4' } -- Dracula Comment Grey (Disabled)
+    end
+    return { fg = '#50fa7b', gui = 'bold' } -- Dracula Green (Active)
   end
 
   require('lualine').setup {
@@ -1746,6 +1765,70 @@ do
   -- -----------------------------------------------------------
   -- Copilot
   -- -----------------------------------------------------------
+  -- ====================================================================
+  -- 1. Package Installation
+  -- ====================================================================
+  vim.pack.add { gh 'zbirenbaum/copilot.lua' }
+  vim.pack.add { gh 'CopilotC-Nvim/CopilotChat.nvim' }
+
+  -- ====================================================================
+  -- 2. Configuration for Core copilot.lua
+  -- ====================================================================
+  require('copilot').setup({
+    panel = { enabled = false }, -- Disables the secondary split panel
+    suggestion = {
+      enabled = true,
+      auto_trigger = true, -- Automatically shows suggestions as you type
+      debounce = 75,
+      keymap = {
+        accept = "<C-y>",      -- Accept suggestion
+        next = "<M-]>",        -- Next suggestion (Alt + ])
+        prev = "<M-[>",        -- Previous suggestion (Alt + [)
+        dismiss = "<C-e>",     -- Dismiss suggestion
+      },
+    },
+    filetypes = {
+      markdown = false,        -- Disable in markdown files
+      text = false,            -- Disable in plain text files
+      gitcommit = false,       -- Disable in Git commit messages
+      yaml = false,            -- Disable in YAML files
+      cvs = false,
+      ["."] = false,           -- Disable for unknown filetypes
+    },
+  })
+
+  -- ====================================================================
+  -- 3. On-the-Fly Toggle Keymaps
+  -- ====================================================================
+  -- Because copilot.lua exposes a clean API, toggling is incredibly simple
+  vim.keymap.set('n', '<leader>ce', '<cmd>Copilot enable<CR>', { desc = 'Copilot - Force enable for buffer' })
+  vim.keymap.set('n', '<leader>cd', '<cmd>Copilot disable<CR>', { desc = 'Copilot - Force disable for buffer' })
+
+  -- ====================================================================
+  -- 4. CopilotChat Configuration & Keymaps
+  -- ====================================================================
+  require('CopilotChat').setup {
+    --[[
+    model = 'gpt-4o',
+    mappings = {
+      submit_prompt = { normal = '<Leader>s', insert = '<C-s>' },
+      show_diff = { full_diff = true },
+      complete = { insert = '<Right>' },
+    },
+    --]]
+  }
+
+  -- Toggle Main Chat
+  vim.keymap.set('n', '<leader>cc', '<cmd>CopilotChatToggle<CR>', { desc = 'Toggle CopilotChat', silent = true })
+  -- Code context helpers (Visual mode maps let you send highlighted blocks to the chat)
+  vim.keymap.set({'n', 'v'}, '<leader>cce', '<cmd>CopilotChatExplain<CR>', { desc = 'CopilotChat - Explain code' })
+  vim.keymap.set({'n', 'v'}, '<leader>cct', '<cmd>CopilotChatTests<CR>', { desc = 'CopilotChat - Generate tests' })
+  vim.keymap.set({'n', 'v'}, '<leader>ccf', '<cmd>CopilotChatFix<CR>', { desc = 'CopilotChat - Fix code bugs' })
+  vim.keymap.set({'n', 'v'}, '<leader>cco', '<cmd>CopilotChatOptimize<CR>', { desc = 'CopilotChat - Optimize performance' })
+  vim.keymap.set({'n', 'v'}, '<leader>ccr', '<cmd>CopilotChatReview<CR>', { desc = 'CopilotChat - Review code' })
+
+
+--[[
   -- 1. Load the Core Copilot Engine (Requires authenticating via :Copilot setup)
   vim.pack.add { gh 'github/copilot.vim' }
   -- 2. Load CopilotChat
@@ -1755,6 +1838,7 @@ do
   -- 3. Configure CopilotChat (Strictly settings inside .setup)
   require('CopilotChat').setup {
     -- model = 'gpt-4o', -- Sets your default baseline model
+--]]
     --[[
     mappings = {
       submit_prompt = {
@@ -1770,6 +1854,7 @@ do
       },
     },
     --]]
+--[[
   }
   -- 4. Explicitly bind ALL Keymaps using standard Neovim API
   -- Toggle Main Chat
@@ -1821,6 +1906,7 @@ do
   -- Force enable or disable Copilot on demand for the active file
   vim.keymap.set('n', '<leader>ce', '<cmd>Copilot enable<CR>', { desc = 'Copilot - Force enable for buffer' })
   vim.keymap.set('n', '<leader>cd', '<cmd>Copilot disable<CR>', { desc = 'Copilot - Force disable for buffer' })
+--]]
 
   -- -----------------------------------------------------------
   -- Display ANSI escape sequences as colors.
