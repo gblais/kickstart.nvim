@@ -285,26 +285,34 @@ do
   -- -----------------------------------------------------------
   -- Backups
   -- -----------------------------------------------------------
+  local backup_dir = vim.fn.stdpath("state") .. "/backup//"
+  if vim.fn.isdirectory(vim.fn.stdpath("state") .. "/backup") == 0 then
+    vim.fn.mkdir(vim.fn.stdpath("state") .. "/backup", "p")
+  end
+
+  vim.o.backup = true
+  vim.o.writebackup = true
+  vim.o.backupdir = backup_dir
   --[[
-  vim.cmd [[
-  set backup                        " enable backups
-  "set noswapfile                  " it's 2013, Vim.
+  -- Note: the default for undodir and directory is already
+  -- $XDG_STATE_HOME/nvim/undodir// and $XDG_STATE_HOME/nvim/swap//,
+  -- so it is not necessary to explicitly set it in my nvim init.lua.
+  -- But if wanted to:
+  local state = vim.fn.stdpath("state")
 
-  set undodir=~/.vim/tmp/undo//     " undo files
-  set backupdir=~/.vim/tmp/backup// " backups
-  set directory=~/.vim/tmp/swap//   " swap files
+  vim.o.undodir = state .. "/undo//"
+  vim.o.backupdir = state .. "/backup//"
+  vim.o.directory = state .. "/swap//"
 
-  " Make those folders automatically if they don't already exist.
-  if !isdirectory(expand(&undodir))
-      call mkdir(expand(&undodir), --p--)
-  endif
-  if !isdirectory(expand(&backupdir))
-      call mkdir(expand(&backupdir), --p--)
-  endif
-  if !isdirectory(expand(&directory))
-      call mkdir(expand(&directory), --p--)
-  endif
-  ]]
+  for _, dir in ipairs({ state .. "/undo", state .. "/backup", state .. "/swap" }) do
+    if vim.fn.isdirectory(dir) == 0 then
+      vim.fn.mkdir(dir, "p")
+    end
+  end
+
+  vim.o.undo = true
+  vim.o.backup = true
+  vim.o.writebackup = true
   --]]
   -- -----------------------------------------------------------
 
